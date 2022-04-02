@@ -15,9 +15,11 @@
 		3A88871D27F1D7E200D7E184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A88871B27F1D7E200D7E184 /* LaunchScreen.storyboard */; };
 		3A88874A27F8AF3000D7E184 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88874927F8AF3000D7E184 /* LoginViewController.swift */; };
 		3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88874B27F8D04500D7E184 /* Transaction.swift */; };
+		508C703108D55D7247F6A302 /* Pods_Finca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05575D94FA74F82FC8BE88E7 /* Pods-Finca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.release.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.release.xcconfig"; sourceTree = "<group>"; };
 		3A88870D27F1D7E000D7E184 /* Finca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A88871027F1D7E000D7E184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A88871227F1D7E000D7E184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		3A88871E27F1D7E200D7E184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A88874927F8AF3000D7E184 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3A88874B27F8D04500D7E184 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Finca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D82E2255FCAD12DC5AF8D2C /* Pods-Finca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.debug.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				508C703108D55D7247F6A302 /* Pods_Finca.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,8 @@
 			children = (
 				3A88870F27F1D7E000D7E184 /* Finca */,
 				3A88870E27F1D7E000D7E184 /* Products */,
+				BB4D11347AFB12AFA981B85E /* Pods */,
+				ABD70779FDE48D09B3452625 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +104,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		ABD70779FDE48D09B3452625 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB4D11347AFB12AFA981B85E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D82E2255FCAD12DC5AF8D2C /* Pods-Finca.debug.xcconfig */,
+				05575D94FA74F82FC8BE88E7 /* Pods-Finca.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A88872127F1D7E200D7E184 /* Build configuration list for PBXNativeTarget "Finca" */;
 			buildPhases = (
+				EAB10F886808E469334BD6C2 /* [CP] Check Pods Manifest.lock */,
 				3A88870927F1D7E000D7E184 /* Sources */,
 				3A88870A27F1D7E000D7E184 /* Frameworks */,
 				3A88870B27F1D7E000D7E184 /* Resources */,
+				EDE60CDE2E195DB25DA890E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,6 +189,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EAB10F886808E469334BD6C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Finca-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDE60CDE2E195DB25DA890E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Finca/Pods-Finca-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Finca/Pods-Finca-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Finca/Pods-Finca-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A88870927F1D7E000D7E184 /* Sources */ = {
@@ -314,6 +383,7 @@
 		};
 		3A88872227F1D7E200D7E184 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D82E2255FCAD12DC5AF8D2C /* Pods-Finca.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -342,6 +412,7 @@
 		};
 		3A88872327F1D7E200D7E184 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05575D94FA74F82FC8BE88E7 /* Pods-Finca.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
