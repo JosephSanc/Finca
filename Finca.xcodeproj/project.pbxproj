@@ -7,19 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */; };
+		3A63B16027FBA4D300A73B60 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A63B15E27FBA4D300A73B60 /* DropDownCell.xib */; };
 		3A88871127F1D7E000D7E184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871027F1D7E000D7E184 /* AppDelegate.swift */; };
 		3A88871327F1D7E000D7E184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871227F1D7E000D7E184 /* SceneDelegate.swift */; };
 		3A88871527F1D7E000D7E184 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871427F1D7E000D7E184 /* WelcomeViewController.swift */; };
 		3A88871827F1D7E000D7E184 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A88871627F1D7E000D7E184 /* Main.storyboard */; };
 		3A88871A27F1D7E200D7E184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A88871927F1D7E200D7E184 /* Assets.xcassets */; };
 		3A88871D27F1D7E200D7E184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A88871B27F1D7E200D7E184 /* LaunchScreen.storyboard */; };
-		3A88874A27F8AF3000D7E184 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88874927F8AF3000D7E184 /* LoginViewController.swift */; };
 		3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88874B27F8D04500D7E184 /* Transaction.swift */; };
 		508C703108D55D7247F6A302 /* Pods_Finca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		05575D94FA74F82FC8BE88E7 /* Pods-Finca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.release.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.release.xcconfig"; sourceTree = "<group>"; };
+		3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		3A63B15E27FBA4D300A73B60 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		3A88870D27F1D7E000D7E184 /* Finca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A88871027F1D7E000D7E184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A88871227F1D7E000D7E184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,7 +31,6 @@
 		3A88871927F1D7E200D7E184 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A88871C27F1D7E200D7E184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A88871E27F1D7E200D7E184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A88874927F8AF3000D7E184 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3A88874B27F8D04500D7E184 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Finca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D82E2255FCAD12DC5AF8D2C /* Pods-Finca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.debug.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,8 +84,8 @@
 		3A88872427F1D7F700D7E184 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */,
 				3A88871427F1D7E000D7E184 /* WelcomeViewController.swift */,
-				3A88874927F8AF3000D7E184 /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -91,6 +93,7 @@
 		3A88872527F1D7FB00D7E184 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A63B15E27FBA4D300A73B60 /* DropDownCell.xib */,
 				3A88871627F1D7E000D7E184 /* Main.storyboard */,
 			);
 			path = Views;
@@ -118,7 +121,6 @@
 				5D82E2255FCAD12DC5AF8D2C /* Pods-Finca.debug.xcconfig */,
 				05575D94FA74F82FC8BE88E7 /* Pods-Finca.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -183,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A88871D27F1D7E200D7E184 /* LaunchScreen.storyboard in Resources */,
+				3A63B16027FBA4D300A73B60 /* DropDownCell.xib in Resources */,
 				3A88871A27F1D7E200D7E184 /* Assets.xcassets in Resources */,
 				3A88871827F1D7E000D7E184 /* Main.storyboard in Resources */,
 			);
@@ -238,7 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A88871527F1D7E000D7E184 /* WelcomeViewController.swift in Sources */,
-				3A88874A27F8AF3000D7E184 /* LoginViewController.swift in Sources */,
+				3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */,
 				3A88871127F1D7E000D7E184 /* AppDelegate.swift in Sources */,
 				3A88871327F1D7E000D7E184 /* SceneDelegate.swift in Sources */,
 				3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */,
@@ -395,6 +398,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -424,6 +428,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
