@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class WelcomeViewController: UIViewController {
+class AddTransactionViewController: UIViewController {
     
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var companyLabel: UILabel!

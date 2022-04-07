@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */; };
 		3A63B16027FBA4D300A73B60 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A63B15E27FBA4D300A73B60 /* DropDownCell.xib */; };
+		3A7082E627FF8B8E00990D0E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082E527FF8B8E00990D0E /* HomeViewController.swift */; };
+		3A7082E827FF8BFE00990D0E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082E727FF8BFE00990D0E /* LoginViewController.swift */; };
+		3A7082EA27FF8C1D00990D0E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082E927FF8C1C00990D0E /* RegisterViewController.swift */; };
+		3A7082EC27FF8C3100990D0E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082EB27FF8C3100990D0E /* LandingViewController.swift */; };
 		3A88871127F1D7E000D7E184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871027F1D7E000D7E184 /* AppDelegate.swift */; };
 		3A88871327F1D7E000D7E184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871227F1D7E000D7E184 /* SceneDelegate.swift */; };
 		3A88871527F1D7E000D7E184 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871427F1D7E000D7E184 /* WelcomeViewController.swift */; };
@@ -23,6 +27,10 @@
 		05575D94FA74F82FC8BE88E7 /* Pods-Finca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.release.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.release.xcconfig"; sourceTree = "<group>"; };
 		3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		3A63B15E27FBA4D300A73B60 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		3A7082E527FF8B8E00990D0E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3A7082E727FF8BFE00990D0E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3A7082E927FF8C1C00990D0E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		3A7082EB27FF8C3100990D0E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		3A88870D27F1D7E000D7E184 /* Finca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A88871027F1D7E000D7E184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A88871227F1D7E000D7E184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 			children = (
 				3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */,
 				3A88871427F1D7E000D7E184 /* WelcomeViewController.swift */,
+				3A7082E527FF8B8E00990D0E /* HomeViewController.swift */,
+				3A7082E727FF8BFE00990D0E /* LoginViewController.swift */,
+				3A7082E927FF8C1C00990D0E /* RegisterViewController.swift */,
+				3A7082EB27FF8C3100990D0E /* LandingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -240,11 +252,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7082E827FF8BFE00990D0E /* LoginViewController.swift in Sources */,
 				3A88871527F1D7E000D7E184 /* WelcomeViewController.swift in Sources */,
 				3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */,
+				3A7082EA27FF8C1D00990D0E /* RegisterViewController.swift in Sources */,
 				3A88871127F1D7E000D7E184 /* AppDelegate.swift in Sources */,
 				3A88871327F1D7E000D7E184 /* SceneDelegate.swift in Sources */,
 				3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */,
+				3A7082EC27FF8C3100990D0E /* LandingViewController.swift in Sources */,
+				3A7082E627FF8B8E00990D0E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

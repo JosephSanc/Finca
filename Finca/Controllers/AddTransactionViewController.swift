@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  AddTransactionViewController.swift
 //  Finca
 //
 //  Created by Joseph Sanchez on 4/7/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class AddTransactionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

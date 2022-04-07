@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  LandingViewController.swift
 //  Finca
 //
 //  Created by Joseph Sanchez on 4/7/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LandingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
