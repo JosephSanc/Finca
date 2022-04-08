@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>288686507413-165uggbs78t0fur4303pgat9fuc7tk86.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.288686507413-165uggbs78t0fur4303pgat9fuc7tk86</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBVeFrP_7I0TA9fMczIQR5cu9DmbtrZEE4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>288686507413</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.josephsanchez.Finca</string>
+	<key>PROJECT_ID</key>
+	<string>finca-26e88</string>
+	<key>STORAGE_BUCKET</key>
+	<string>finca-26e88.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:288686507413:ios:feef395752d871fadba29c</string>
+</dict>
+</plist>

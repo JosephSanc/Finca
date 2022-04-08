@@ -96,7 +96,7 @@
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="DIb-Pc-cmw" kind="show" identifier="LoginToLanding" id="G7S-BW-1du"/>
+                                    <action selector="loginBtn:" destination="3zc-MD-bgK" eventType="touchUpInside" id="Pmh-nG-vOk"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFZ-6l-4NZ">
@@ -108,13 +108,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="kKE-uE-Dt3" userLabel="Username">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWq-sU-wZ0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWq-sU-wZ0">
                                                         <rect key="frame" x="0.0" y="0.0" width="114" height="50"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hKw-cV-UWF">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1@2.com" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hKw-cV-UWF">
                                                         <rect key="frame" x="170" y="0.0" width="180" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="BPT-cd-0Pd"/>
@@ -134,14 +134,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAa-bV-EoJ">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAa-bV-EoJ">
                                                         <rect key="frame" x="170" y="0.0" width="180" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="LHd-cj-2cj"/>
                                                             <constraint firstAttribute="height" constant="50" id="YtO-lH-DZT"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -168,6 +168,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="ZsH-fW-gyF"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="hKw-cV-UWF" id="U1p-iC-L61"/>
+                        <outlet property="passwordTextField" destination="bAa-bV-EoJ" id="ExM-Vn-y6g"/>
+                        <segue destination="DIb-Pc-cmw" kind="show" identifier="LoginToLanding" id="KAk-jQ-4tY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNW-zU-o8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,7 +195,7 @@
                                     <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="DIb-Pc-cmw" kind="show" identifier="RegisterToLanding" id="D3L-Om-3wu"/>
+                                    <action selector="registerBtn:" destination="YyQ-0j-Tcj" eventType="touchUpInside" id="Sf8-sI-JpO"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="969-4z-8vy">
@@ -202,7 +207,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="aU9-ID-ZT3" userLabel="Username">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOS-bW-x68">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOS-bW-x68">
                                                         <rect key="frame" x="0.0" y="0.0" width="114" height="50"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                                         <nil key="textColor"/>
@@ -235,7 +240,7 @@
                                                             <constraint firstAttribute="width" constant="180" id="Ym7-2W-IhF"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -260,6 +265,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="htv-7z-AG9"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="gfu-tb-Khk" id="Nnx-5R-Nzl"/>
+                        <outlet property="passwordTextField" destination="j85-rb-lBr" id="VNA-jU-4L2"/>
+                        <segue destination="DIb-Pc-cmw" kind="show" identifier="RegisterToLanding" id="A3L-vv-4NV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQv-Ki-1H5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -467,7 +477,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="D3L-Om-3wu"/>
+        <segue reference="A3L-vv-4NV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="BrandBrown">
