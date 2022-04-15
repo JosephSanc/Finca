@@ -10,4 +10,14 @@ import Foundation
 struct K {
     static let registerToLanding = "RegisterToLanding"
     static let loginToLanding = "LoginToLanding"
+    static let transactionNibName = "TransactionCell"
+    
+    struct UserCollection {
+        static let userCollentionName = "users"
+        static let nameKey = "name"
+    }
+    
+    struct TransactionCollection {
+        static let collectionName = "transactions"
+    }
 }

@@ -34,7 +34,7 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Log In">
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                            <fontDescription key="titleFontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="3zc-MD-bgK" kind="show" id="Dyu-Js-xJ0"/>
@@ -50,7 +50,7 @@
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Register">
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                            <fontDescription key="titleFontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="YyQ-0j-Tcj" kind="show" id="6yj-Ot-UPx"/>
@@ -93,7 +93,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Login">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginBtn:" destination="3zc-MD-bgK" eventType="touchUpInside" id="Pmh-nG-vOk"/>
@@ -187,12 +187,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDR-XP-WpQ">
-                                <rect key="frame" x="148.5" y="489.5" width="117" height="43.5"/>
+                                <rect key="frame" x="151" y="489.5" width="112.5" height="43.5"/>
                                 <color key="backgroundColor" name="BrandBrown"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Register">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="registerBtn:" destination="YyQ-0j-Tcj" eventType="touchUpInside" id="Sf8-sI-JpO"/>
@@ -297,7 +297,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Transactions"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="drf-xz-9s2"/>
+                                            <segue destination="MLO-aj-sKC" kind="show" id="j3X-vO-8L2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cb3-It-DRg">
@@ -337,6 +337,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ae9-xD-5oG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4394" y="-222"/>
+        </scene>
+        <!--Transactions-->
+        <scene sceneID="ahd-PR-cbV">
+            <objects>
+                <viewController id="MLO-aj-sKC" customClass="TransactionsViewController" customModule="Finca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kSQ-D3-gXk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-Eq-Nsx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="708"/>
+                                <color key="backgroundColor" name="BrandWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlG-T7-DPe">
+                                <rect key="frame" x="334" y="804" width="60" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="MwX-1E-T62"/>
+                                    <constraint firstAttribute="height" constant="40" id="cd8-n4-kCs"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Add"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="XbR-pA-qmJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VK3-4J-VCO"/>
+                        <color key="backgroundColor" name="BrandWhite"/>
+                        <constraints>
+                            <constraint firstItem="VK3-4J-VCO" firstAttribute="trailing" secondItem="rlG-T7-DPe" secondAttribute="trailing" constant="20" id="0a6-3A-xKe"/>
+                            <constraint firstItem="8D5-Eq-Nsx" firstAttribute="top" secondItem="VK3-4J-VCO" secondAttribute="top" id="83L-GM-Ba3"/>
+                            <constraint firstItem="8D5-Eq-Nsx" firstAttribute="leading" secondItem="VK3-4J-VCO" secondAttribute="leading" id="SH4-y0-lYE"/>
+                            <constraint firstItem="8D5-Eq-Nsx" firstAttribute="trailing" secondItem="VK3-4J-VCO" secondAttribute="trailing" id="gnR-8n-cFZ"/>
+                            <constraint firstAttribute="bottom" secondItem="8D5-Eq-Nsx" secondAttribute="bottom" constant="100" id="hRT-sF-Y1O"/>
+                            <constraint firstItem="rlG-T7-DPe" firstAttribute="top" secondItem="8D5-Eq-Nsx" secondAttribute="bottom" constant="8" symbolic="YES" id="u4p-qU-nuX"/>
+                            <constraint firstItem="rlG-T7-DPe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VK3-4J-VCO" secondAttribute="leading" symbolic="YES" id="wJS-7G-0GN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Transactions" id="o6E-u8-oQN"/>
+                    <connections>
+                        <outlet property="tableView" destination="8D5-Eq-Nsx" id="vr3-6m-3Ys"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1d-tV-Qp6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5292.753623188406" y="-222.32142857142856"/>
         </scene>
         <!--Add Transaction-->
         <scene sceneID="tne-QT-ifu">
@@ -380,12 +426,12 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LFF-j1-W3P">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="34"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NUQ-Ib-VCW">
                                                 <rect key="frame" x="0.0" y="71" width="133" height="34"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view tag="1234" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1B-ac-4J0" userLabel="CategoryDropDown">
@@ -455,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5183" y="-222"/>
+            <point key="canvasLocation" x="6172" y="-222"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y9i-hE-7Mz">
