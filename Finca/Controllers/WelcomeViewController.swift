@@ -13,12 +13,16 @@ class AddTransactionViewController: UIViewController {
     
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountInput: UITextField!
     @IBOutlet weak var companyInput: UITextField!
     @IBOutlet weak var categoryView: UIView!
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var dateTxtField: UITextField!
     
     var docRef: DocumentReference!
+    
+    let datePicker = UIDatePicker()
     
     let menu: DropDown = {
         let menu = DropDown()
@@ -66,6 +70,8 @@ class AddTransactionViewController: UIViewController {
             self.categoryLabel.text = title
         }
         
+        createDatePicker()
+        
     }
     
     func getCurrentUser() -> Substring {
@@ -77,12 +83,38 @@ class AddTransactionViewController: UIViewController {
             return "Error getting current user"
         }
     }
+    
+    func createDatePicker(){
+        dateTxtField.textAlignment = .center
+
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneBtn], animated: true)
+
+        dateTxtField.inputAccessoryView = toolbar
+        dateTxtField.inputView = datePicker
+
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+    }
+
+    @objc func donePressed(){
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+
+        dateTxtField.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
 
     //TODO: Refactor this to take user input date instead of the current date like I have below
     @IBAction func addTransaction(_ sender: Any) {
         guard let amount = Float(amountInput.text!) else { return }
         guard let company = companyInput.text else { return }
         guard let category = menu.selectedItem else { return }
+        
         var dateComponents = DateComponents()
         dateComponents.year = Calendar.current.component(.year, from: Date())
         dateComponents.month = Calendar.current.component(.month, from: Date())
@@ -90,16 +122,15 @@ class AddTransactionViewController: UIViewController {
         let userCalender = Calendar(identifier: .gregorian)
         let someDateTime = userCalender.date(from: dateComponents)
         
-        let transaction = Transaction(amount: amount, company: company, category: category)
-        
         let year = Calendar.current.component(.year, from: Date())
         let month = Calendar.current.component(.month, from: Date())
+        
         docRef = Firestore.firestore().document("\(K.UserCollection.userCollentionName)/\(getCurrentUser())/\(K.TransactionCollection.collectionName)/\(year)/\"month\"/\(month)")
         
         let dataToSave: [String: [String: Any]] = ["transaction": ["amount": amount, "company": company, "category": category, "date": someDateTime!]]
         docRef.setData(dataToSave)
         
-        print("Amount: \(transaction.amount), Company: \(transaction.company), Category: \(transaction.category)")
+        print("Amount: \(amount), Company: \(company), Category: \(category)")
     }
     
     @objc func didTapTopView(){
@@ -107,4 +138,5 @@ class AddTransactionViewController: UIViewController {
     }
 
 }
+
 
