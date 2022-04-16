@@ -398,25 +398,25 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="NDo-md-MRA" userLabel="Transaction Labels">
                                         <rect key="frame" x="25" y="20" width="105" height="250"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqO-Wm-hzK">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqO-Wm-hzK">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="37"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Company" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HK4-Yf-2cn">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Company" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HK4-Yf-2cn">
                                                 <rect key="frame" x="0.0" y="71" width="105" height="37"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Category" textAlignment="natural" lineBreakMode="characterWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNI-MN-yg6">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Category" textAlignment="center" lineBreakMode="characterWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNI-MN-yg6">
                                                 <rect key="frame" x="0.0" y="142" width="105" height="37"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Date" textAlignment="natural" lineBreakMode="characterWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U23-Bs-xG7">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Date" textAlignment="center" lineBreakMode="characterWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U23-Bs-xG7">
                                                 <rect key="frame" x="0.0" y="213" width="105" height="37"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                                 <nil key="textColor"/>
@@ -430,35 +430,21 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="ENf-mG-op9" userLabel="Input Transaction">
                                         <rect key="frame" x="156" y="20" width="133" height="250"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LFF-j1-W3P">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LFF-j1-W3P">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="35"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NUQ-Ib-VCW">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NUQ-Ib-VCW">
                                                 <rect key="frame" x="0.0" y="72" width="133" height="34.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <view tag="1234" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1B-ac-4J0" userLabel="CategoryDropDown">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ble-zY-ecd">
                                                 <rect key="frame" x="0.0" y="143.5" width="133" height="35"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-B0-tWT">
-                                                        <rect key="frame" x="2" y="0.0" width="131" height="35"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <accessibility key="accessibilityConfiguration" label="CategoryDropDown"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="YcP-B0-tWT" secondAttribute="trailing" id="4qh-HA-zjb"/>
-                                                    <constraint firstItem="YcP-B0-tWT" firstAttribute="leading" secondItem="Z1B-ac-4J0" secondAttribute="leading" constant="2" id="Orh-aZ-e3f"/>
-                                                    <constraint firstItem="YcP-B0-tWT" firstAttribute="top" secondItem="Z1B-ac-4J0" secondAttribute="top" id="ht8-R9-bnx"/>
-                                                    <constraint firstAttribute="bottom" secondItem="YcP-B0-tWT" secondAttribute="bottom" id="kpG-yl-cx5"/>
-                                                </constraints>
-                                            </view>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="0.0"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xNl-VA-zAp">
                                                 <rect key="frame" x="0.0" y="215.5" width="133" height="34.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
@@ -479,6 +465,14 @@
                                     <constraint firstItem="NDo-md-MRA" firstAttribute="leading" secondItem="8xF-qc-OZn" secondAttribute="leading" constant="25" id="lSn-xh-V4z"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vG8-Pt-Hn9">
+                                <rect key="frame" x="142.5" y="509" width="129" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Transaction"/>
+                                <connections>
+                                    <action selector="addTransaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VBc-LG-wSj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BrandWhite"/>
@@ -486,16 +480,18 @@
                             <constraint firstItem="8xF-qc-OZn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="9rX-xy-U2M"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8xF-qc-OZn" secondAttribute="bottom" constant="361" id="BqT-JK-cww"/>
                             <constraint firstItem="8xF-qc-OZn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CzP-eB-9UJ"/>
+                            <constraint firstItem="vG8-Pt-Hn9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K3h-uW-bqu"/>
                             <constraint firstItem="8xF-qc-OZn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="86" id="bBP-4b-YMp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8xF-qc-OZn" secondAttribute="trailing" constant="50" id="cmb-2p-JDv"/>
+                            <constraint firstItem="vG8-Pt-Hn9" firstAttribute="top" secondItem="8xF-qc-OZn" secondAttribute="bottom" constant="8" symbolic="YES" id="nrf-rJ-hyZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Transaction" id="juA-wB-9AX"/>
                     <connections>
                         <outlet property="amountInput" destination="LFF-j1-W3P" id="1Em-RC-yGC"/>
                         <outlet property="amountLabel" destination="bqO-Wm-hzK" id="liX-s0-Lih"/>
-                        <outlet property="categoryLabel" destination="YcP-B0-tWT" id="wHj-Lm-aYC"/>
-                        <outlet property="categoryView" destination="Z1B-ac-4J0" id="fqf-hT-N6t"/>
+                        <outlet property="categoryLabel" destination="HNI-MN-yg6" id="HSW-5s-ZFW"/>
+                        <outlet property="categoryTxtField" destination="ble-zY-ecd" id="Uuf-bj-YL4"/>
                         <outlet property="companyInput" destination="NUQ-Ib-VCW" id="OaZ-iA-S3U"/>
                         <outlet property="companyLabel" destination="HK4-Yf-2cn" id="CgY-np-IBC"/>
                         <outlet property="dateLabel" destination="U23-Bs-xG7" id="KfH-Ra-ses"/>
@@ -540,9 +536,6 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
