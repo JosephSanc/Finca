@@ -44,7 +44,7 @@ class RegisterViewController: UIViewController {
             let range = email.startIndex..<indexOfAtSymbol
             let filteredEmail = email[range]
             
-            docRef = Firestore.firestore().document("\(K.UserCollection.userCollentionName)/\(filteredEmail)")
+            docRef = Firestore.firestore().document("\(K.UserCollection.userCollectionName)/\(filteredEmail)")
             
             let dataToSave: [String: Any] = [K.UserCollection.nameKey: filteredEmail]
             docRef.setData(dataToSave)

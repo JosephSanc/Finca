@@ -21,6 +21,8 @@ class AddTransactionViewController: UIViewController {
     
     var docRef: DocumentReference!
     
+    private var db = Firestore.firestore()
+    
     let datePicker = UIDatePicker()
     let categoryPicker = UIPickerView()
     
@@ -77,27 +79,25 @@ class AddTransactionViewController: UIViewController {
     //TODO: Refactor this to take user input date instead of the current date like I have below
     @IBAction func addTransaction(_ sender: Any) {
         
-        print(dateTxtField.text!)
-//        guard let amount = Float(amountInput.text!) else { return }
-//        guard let company = companyInput.text else { return }
-//        guard let category = categoryTxtField.text else { return }
-//
-//        var dateComponents = DateComponents()
-//        dateComponents.year = Calendar.current.component(.year, from: Date())
-//        dateComponents.month = Calendar.current.component(.month, from: Date())
-//        dateComponents.day = Calendar.current.component(.day, from: Date())
-//        let userCalender = Calendar(identifier: .gregorian)
-//        let someDateTime = userCalender.date(from: dateComponents)
-//
-//        let year = Calendar.current.component(.year, from: Date())
-//        let month = Calendar.current.component(.month, from: Date())
-//
+        let dateHelper = DateFormatChanger(dateStr: dateTxtField.text!)
+        
+        let day = dateHelper.getDay()
+        let month = dateHelper.getMonthNumber()
+        let year = dateHelper.getYear()
+        
+        guard let amount = Float(amountInput.text!) else { return }
+        guard let company = companyInput.text?.lowercased() else { return }
+        guard let category = categoryTxtField.text?.lowercased() else { return }
+        
+        var ref: DocumentReference?  = nil
+        
+        
 //        docRef = Firestore.firestore().document("\(K.UserCollection.userCollentionName)/\(getCurrentUser())/\(K.TransactionCollection.collectionName)/\(year)/\"month\"/\(month)")
-//
-//        let dataToSave: [String: [String: Any]] = ["transaction": ["amount": amount, "company": company, "category": category, "date": someDateTime!]]
+
+        let dataToSave: [String: Any] = ["amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
 //        docRef.setData(dataToSave)
-//
-//        print("Amount: \(amount), Company: \(company), Category: \(category)")
+        db.collection(K.UserCollection.userCollectionName).document(String(getCurrentUser())).collection(K.TransactionCollection.collectionName).document(String(year)).collection(String(month)).parent?.setData(dataToSave)
+        print("Amount: \(amount), Company: \(company), Category: \(category), Month: \(month), Day: \(day), Year: \(year)")
     }
 }
 
@@ -119,5 +119,4 @@ extension AddTransactionViewController: UIPickerViewDelegate, UIPickerViewDataSo
         categoryTxtField.resignFirstResponder()
     }
 }
-
 
