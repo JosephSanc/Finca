@@ -17,6 +17,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        hideKeyboardWhenTappedAround()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     
@@ -31,5 +34,23 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    // Return button tapped
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       textField.resignFirstResponder()
+       return true
+   }
+
+   // Around tapped
+   func hideKeyboardWhenTappedAround() {
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+       tap.cancelsTouchesInView = false
+       view.addGestureRecognizer(tap)
+   }
+
+   @objc func dismissKeyboard() {
+       view.endEditing(true)
+   }
 }

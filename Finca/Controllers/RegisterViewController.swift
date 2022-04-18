@@ -19,6 +19,9 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        hideKeyboardWhenTappedAround()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     
@@ -50,4 +53,23 @@ class RegisterViewController: UIViewController {
             docRef.setData(dataToSave)
         }
     }
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    // Return button tapped
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       textField.resignFirstResponder()
+       return true
+   }
+
+   // Around tapped
+   func hideKeyboardWhenTappedAround() {
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.dismissKeyboard))
+       tap.cancelsTouchesInView = false
+       view.addGestureRecognizer(tap)
+   }
+
+   @objc func dismissKeyboard() {
+       view.endEditing(true)
+   }
 }

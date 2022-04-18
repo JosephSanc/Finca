@@ -33,6 +33,10 @@ class AddTransactionViewController: UIViewController {
         
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
+        
+        hideKeyboardWhenTappedAround()
+        amountInput.delegate = self
+        companyInput.delegate = self
 
         categoryTxtField.inputView = categoryPicker
         categoryTxtField.textAlignment = .center
@@ -120,3 +124,21 @@ extension AddTransactionViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
 }
 
+extension AddTransactionViewController: UITextFieldDelegate {
+    // Return button tapped
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       textField.resignFirstResponder()
+       return true
+   }
+
+   // Around tapped
+   func hideKeyboardWhenTappedAround() {
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddTransactionViewController.dismissKeyboard))
+       tap.cancelsTouchesInView = false
+       view.addGestureRecognizer(tap)
+   }
+
+   @objc func dismissKeyboard() {
+       view.endEditing(true)
+   }
+}
