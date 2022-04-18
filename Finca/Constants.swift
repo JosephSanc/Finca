@@ -13,7 +13,7 @@ struct K {
     static let transactionNibName = "TransactionCell"
     
     struct UserCollection {
-        static let userCollentionName = "users"
+        static let userCollectionName = "users"
         static let nameKey = "name"
     }
     

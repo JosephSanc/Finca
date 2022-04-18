@@ -25,7 +25,7 @@
 		3A88871A27F1D7E200D7E184 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A88871927F1D7E200D7E184 /* Assets.xcassets */; };
 		3A88871D27F1D7E200D7E184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A88871B27F1D7E200D7E184 /* LaunchScreen.storyboard */; };
 		3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88874B27F8D04500D7E184 /* Transaction.swift */; };
-		3AA2154A280B377D006826D3 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA21549280B377D006826D3 /* DateHelper.swift */; };
+		3AA2154C280B3AC5006826D3 /* DateFormatChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */; };
 		508C703108D55D7247F6A302 /* Pods_Finca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,7 @@
 		3A88871C27F1D7E200D7E184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A88871E27F1D7E200D7E184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A88874B27F8D04500D7E184 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		3AA21549280B377D006826D3 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatChanger.swift; sourceTree = "<group>"; };
 		5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Finca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D82E2255FCAD12DC5AF8D2C /* Pods-Finca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.debug.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,7 +130,7 @@
 			children = (
 				3A88874B27F8D04500D7E184 /* Transaction.swift */,
 				3A3D73E5280981180018E453 /* UserHelper.swift */,
-				3AA21549280B377D006826D3 /* DateHelper.swift */,
+				3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 				3A88871527F1D7E000D7E184 /* WelcomeViewController.swift in Sources */,
 				3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */,
 				3A84D73E28020CCB00F3BD1F /* TransactionsViewController.swift in Sources */,
-				3AA2154A280B377D006826D3 /* DateHelper.swift in Sources */,
+				3AA2154C280B3AC5006826D3 /* DateFormatChanger.swift in Sources */,
 				3A7082EA27FF8C1D00990D0E /* RegisterViewController.swift in Sources */,
 				3A88871127F1D7E000D7E184 /* AppDelegate.swift in Sources */,
 				3A3D73E6280981180018E453 /* UserHelper.swift in Sources */,

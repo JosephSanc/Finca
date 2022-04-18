@@ -440,9 +440,9 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ble-zY-ecd">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4vK-Kp-Qrd">
                                                 <rect key="frame" x="0.0" y="143.5" width="133" height="35"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="0.0"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xNl-VA-zAp">
@@ -465,18 +465,21 @@
                                     <constraint firstItem="NDo-md-MRA" firstAttribute="leading" secondItem="8xF-qc-OZn" secondAttribute="leading" constant="25" id="lSn-xh-V4z"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vG8-Pt-Hn9">
-                                <rect key="frame" x="142.5" y="509" width="129" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMj-h8-FPe">
+                                <rect key="frame" x="144" y="509" width="129" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Transaction"/>
                                 <connections>
-                                    <action selector="addTransaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VBc-LG-wSj"/>
+                                    <action selector="addTransaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uFW-29-UyI"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BrandWhite"/>
                         <constraints>
+                            <constraint firstItem="MMj-h8-FPe" firstAttribute="top" secondItem="8xF-qc-OZn" secondAttribute="bottom" constant="8" id="2na-jw-M9I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MMj-h8-FPe" secondAttribute="trailing" constant="141" id="6vf-L5-g9d"/>
+                            <constraint firstItem="MMj-h8-FPe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="912-Lo-wLj"/>
                             <constraint firstItem="8xF-qc-OZn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="9rX-xy-U2M"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8xF-qc-OZn" secondAttribute="bottom" constant="361" id="BqT-JK-cww"/>
                             <constraint firstItem="8xF-qc-OZn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CzP-eB-9UJ"/>
@@ -490,8 +493,8 @@
                     <connections>
                         <outlet property="amountInput" destination="LFF-j1-W3P" id="1Em-RC-yGC"/>
                         <outlet property="amountLabel" destination="bqO-Wm-hzK" id="liX-s0-Lih"/>
-                        <outlet property="categoryLabel" destination="HNI-MN-yg6" id="HSW-5s-ZFW"/>
-                        <outlet property="categoryTxtField" destination="ble-zY-ecd" id="Uuf-bj-YL4"/>
+                        <outlet property="categoryLabel" destination="HNI-MN-yg6" id="Ytn-y9-hpu"/>
+                        <outlet property="categoryTxtField" destination="4vK-Kp-Qrd" id="3OO-LB-SHT"/>
                         <outlet property="companyInput" destination="NUQ-Ib-VCW" id="OaZ-iA-S3U"/>
                         <outlet property="companyLabel" destination="HK4-Yf-2cn" id="CgY-np-IBC"/>
                         <outlet property="dateLabel" destination="U23-Bs-xG7" id="KfH-Ra-ses"/>
@@ -522,7 +525,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A3L-vv-4NV"/>
+        <segue reference="KAk-jQ-4tY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="BrandBrown">
