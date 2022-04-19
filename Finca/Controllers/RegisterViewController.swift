@@ -24,15 +24,8 @@ class RegisterViewController: UIViewController {
         passwordTextField.delegate = self
     }
     
-    
     @IBAction func registerBtn(_ sender: UIButton) {
-        if let email = emailTextField.text {
-            let indexOfAt = email.firstIndex(of: "@")
-            let range = email.startIndex..<indexOfAt!
-            let filteredUser = email[range]
-            print(filteredUser)
-        }
-
+        
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let errorMessage = error {
@@ -40,20 +33,23 @@ class RegisterViewController: UIViewController {
                     print(errorMessage)
                 } else {
                     self.performSegue(withIdentifier: K.registerToLanding, sender: self)
+                    
+                    guard let userID = Auth.auth().currentUser?.uid else { return }
+                    guard let email = Auth.auth().currentUser?.email else { return }
+        
+                    print(userID)
+                    print(email)
+        
+                    self.docRef = Firestore.firestore().document("\(K.UserCollection.userCollectionName)/\(userID)")
+        
+                    let dataToSave: [String: Any] = [K.UserCollection.emailKey: email]
+                    self.docRef.setData(dataToSave)
                 }
             }
-            
-            guard let indexOfAtSymbol = email.firstIndex(of: "@") else { return  }
-            let range = email.startIndex..<indexOfAtSymbol
-            let filteredEmail = email[range]
-            
-            docRef = Firestore.firestore().document("\(K.UserCollection.userCollectionName)/\(filteredEmail)")
-            
-            let dataToSave: [String: Any] = [K.UserCollection.nameKey: filteredEmail]
-            docRef.setData(dataToSave)
         }
     }
 }
+
 
 extension RegisterViewController: UITextFieldDelegate {
     // Return button tapped

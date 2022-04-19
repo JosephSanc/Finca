@@ -483,10 +483,9 @@
                             <constraint firstItem="8xF-qc-OZn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="9rX-xy-U2M"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8xF-qc-OZn" secondAttribute="bottom" constant="361" id="BqT-JK-cww"/>
                             <constraint firstItem="8xF-qc-OZn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CzP-eB-9UJ"/>
-                            <constraint firstItem="vG8-Pt-Hn9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K3h-uW-bqu"/>
+                            <constraint firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K3h-uW-bqu"/>
                             <constraint firstItem="8xF-qc-OZn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="86" id="bBP-4b-YMp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8xF-qc-OZn" secondAttribute="trailing" constant="50" id="cmb-2p-JDv"/>
-                            <constraint firstItem="vG8-Pt-Hn9" firstAttribute="top" secondItem="8xF-qc-OZn" secondAttribute="bottom" constant="8" symbolic="YES" id="nrf-rJ-hyZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Transaction" id="juA-wB-9AX"/>

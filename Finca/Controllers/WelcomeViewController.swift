@@ -82,25 +82,26 @@ class AddTransactionViewController: UIViewController {
 
     //TODO: Refactor this to take user input date instead of the current date like I have below
     @IBAction func addTransaction(_ sender: Any) {
-        
+
         let dateHelper = DateFormatChanger(dateStr: dateTxtField.text!)
-        
+
         let day = dateHelper.getDay()
         let month = dateHelper.getMonthNumber()
         let year = dateHelper.getYear()
-        
+
         guard let amount = Float(amountInput.text!) else { return }
         guard let company = companyInput.text?.lowercased() else { return }
         guard let category = categoryTxtField.text?.lowercased() else { return }
+
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        guard let email = Auth.auth().currentUser?.email else { return }
         
-        var ref: DocumentReference?  = nil
-        
-        
-//        docRef = Firestore.firestore().document("\(K.UserCollection.userCollentionName)/\(getCurrentUser())/\(K.TransactionCollection.collectionName)/\(year)/\"month\"/\(month)")
+        let uuid = UUID().uuidString
+
+        docRef = Firestore.firestore().document("\(K.UserCollection.userCollectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(uuid)")
 
         let dataToSave: [String: Any] = ["amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
-//        docRef.setData(dataToSave)
-        db.collection(K.UserCollection.userCollectionName).document(String(getCurrentUser())).collection(K.TransactionCollection.collectionName).document(String(year)).collection(String(month)).parent?.setData(dataToSave)
+        docRef.setData(dataToSave)
         print("Amount: \(amount), Company: \(company), Category: \(category), Month: \(month), Day: \(day), Year: \(year)")
     }
 }

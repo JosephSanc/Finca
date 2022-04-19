@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3A3D73E6280981180018E453 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D73E5280981180018E453 /* UserHelper.swift */; };
+		3A4A789A280E11E400E2037D /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A7898280E11E400E2037D /* TransactionCell.swift */; };
+		3A4A789B280E11E400E2037D /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4A7899280E11E400E2037D /* TransactionCell.xib */; };
 		3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */; };
 		3A7082E627FF8B8E00990D0E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082E527FF8B8E00990D0E /* HomeViewController.swift */; };
 		3A7082E827FF8BFE00990D0E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082E727FF8BFE00990D0E /* LoginViewController.swift */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		05575D94FA74F82FC8BE88E7 /* Pods-Finca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.release.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.release.xcconfig"; sourceTree = "<group>"; };
 		3A3D73E5280981180018E453 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		3A4A7898280E11E400E2037D /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionCell.swift; path = ../TransactionCell.swift; sourceTree = "<group>"; };
+		3A4A7899280E11E400E2037D /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TransactionCell.xib; path = ../TransactionCell.xib; sourceTree = "<group>"; };
 		3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		3A7082E527FF8B8E00990D0E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3A7082E727FF8BFE00990D0E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 		3A88872427F1D7F700D7E184 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A4A7898280E11E400E2037D /* TransactionCell.swift */,
 				3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */,
 				3A88871427F1D7E000D7E184 /* WelcomeViewController.swift */,
 				3A7082E527FF8B8E00990D0E /* HomeViewController.swift */,
@@ -120,6 +125,7 @@
 		3A88872527F1D7FB00D7E184 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A4A7899280E11E400E2037D /* TransactionCell.xib */,
 				3A88871627F1D7E000D7E184 /* Main.storyboard */,
 			);
 			path = Views;
@@ -223,6 +229,7 @@
 				3A88871A27F1D7E200D7E184 /* Assets.xcassets in Resources */,
 				3A84D72F2800A36500F3BD1F /* GoogleService-Info.plist in Resources */,
 				3A88871827F1D7E000D7E184 /* Main.storyboard in Resources */,
+				3A4A789B280E11E400E2037D /* TransactionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4A789A280E11E400E2037D /* TransactionCell.swift in Sources */,
 				3A7082E827FF8BFE00990D0E /* LoginViewController.swift in Sources */,
 				3A88871527F1D7E000D7E184 /* WelcomeViewController.swift in Sources */,
 				3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */,

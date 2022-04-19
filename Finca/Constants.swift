@@ -14,7 +14,7 @@ struct K {
     
     struct UserCollection {
         static let userCollectionName = "users"
-        static let nameKey = "name"
+        static let emailKey = "email"
     }
     
     struct TransactionCollection {

@@ -16,21 +16,24 @@ class TransactionsViewController: UIViewController {
         "12.00",
         "38.99",
         "42.50",
-        "10.00"
+        "10.00",
+        "123.33"
     ]
     
     let companies = [
         "Amazon",
         "Walmart",
         "Costco",
-        "Amazon"
+        "Amazon",
+        "The Booga looga store"
     ]
     
     let categories = [
         "Shopping",
         "Groceries",
         "Groceries",
-        "Health"
+        "Health",
+        "Groceries"
     ]
     
     override func viewDidLoad() {
