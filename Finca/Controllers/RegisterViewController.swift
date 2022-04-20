@@ -25,9 +25,11 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerBtn(_ sender: UIButton) {
+        let emailRefined = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let passwordRefined = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+        if let email = emailRefined, let password = passwordRefined {
+            Auth.auth().createUser(withEmail: email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(), password: password.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()) { authResult, error in
                 if let errorMessage = error {
                     print("EMAIL: \(email)")
                     print(errorMessage)

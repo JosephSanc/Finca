@@ -24,7 +24,10 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginBtn(_ sender: UIButton) {
-        if let email = emailTextField.text, let password = passwordTextField.text {
+        let emailRefined = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let passwordRefined = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
+        if let email = emailRefined, let password = passwordRefined {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let errorMessage = error {
                     print(errorMessage)
