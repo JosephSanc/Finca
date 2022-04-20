@@ -94,11 +94,10 @@ class AddTransactionViewController: UIViewController {
         guard let category = categoryTxtField.text?.lowercased() else { return }
 
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        guard let email = Auth.auth().currentUser?.email else { return }
         
         let uuid = UUID().uuidString
 
-        docRef = Firestore.firestore().document("\(K.UserCollection.userCollectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(uuid)")
+        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(uuid)")
 
         let dataToSave: [String: Any] = ["amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
         docRef.setData(dataToSave)

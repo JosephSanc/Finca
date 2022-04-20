@@ -8,7 +8,10 @@
 import Foundation
 
 struct Transaction {
+    public let month: Int
+    public let day: Int
+    public let year: Int
     public let amount: Float
     public let company: String
-    public let category: String
+    public let category : String
 }

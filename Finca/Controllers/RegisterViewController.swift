@@ -42,7 +42,7 @@ class RegisterViewController: UIViewController {
                     print(userID)
                     print(email)
         
-                    self.docRef = Firestore.firestore().document("\(K.UserCollection.userCollectionName)/\(userID)")
+                    self.docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)")
         
                     let dataToSave: [String: Any] = [K.UserCollection.emailKey: email]
                     self.docRef.setData(dataToSave)

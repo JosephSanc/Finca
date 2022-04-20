@@ -321,6 +321,9 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Stats"/>
+                                        <connections>
+                                            <action selector="TestingTransaction:" destination="DIb-Pc-cmw" eventType="touchUpInside" id="1A6-BI-uNa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
