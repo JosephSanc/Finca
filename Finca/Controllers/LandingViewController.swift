@@ -21,7 +21,7 @@ class LandingViewController: UIViewController {
     @IBAction func TestingTransaction(_ sender: UIButton) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
   
-        db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).whereField("company", isEqualTo: "walmart").getDocuments { querySnapshot, err in
+        db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).whereField("month", isEqualTo: 4).getDocuments { querySnapshot, err in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

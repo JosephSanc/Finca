@@ -94,7 +94,7 @@ class AddTransactionViewController: UIViewController {
         guard let category = categoryTxtField.text?.lowercased() else { return }
 
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        
+
         let uuid = UUID().uuidString
 
         docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(uuid)")

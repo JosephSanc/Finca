@@ -20,6 +20,7 @@
 		3A84D7342800A3A100F3BD1F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3A84D7332800A3A100F3BD1F /* FirebaseFirestore */; };
 		3A84D7362800A40500F3BD1F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84D7352800A40400F3BD1F /* Constants.swift */; };
 		3A84D73E28020CCB00F3BD1F /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A84D73D28020CCB00F3BD1F /* TransactionsViewController.swift */; };
+		3A876C7B2812D10400215965 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A876C7A2812D10400215965 /* DateHelper.swift */; };
 		3A88871127F1D7E000D7E184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871027F1D7E000D7E184 /* AppDelegate.swift */; };
 		3A88871327F1D7E000D7E184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871227F1D7E000D7E184 /* SceneDelegate.swift */; };
 		3A88871527F1D7E000D7E184 /* AddTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88871427F1D7E000D7E184 /* AddTransactionsViewController.swift */; };
@@ -44,6 +45,7 @@
 		3A84D72E2800A36500F3BD1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A84D7352800A40400F3BD1F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A84D73D28020CCB00F3BD1F /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		3A876C7A2812D10400215965 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		3A88870D27F1D7E000D7E184 /* Finca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A88871027F1D7E000D7E184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A88871227F1D7E000D7E184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				3A88874B27F8D04500D7E184 /* Transaction.swift */,
 				3A3D73E5280981180018E453 /* UserHelper.swift */,
 				3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */,
+				3A876C7A2812D10400215965 /* DateHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A876C7B2812D10400215965 /* DateHelper.swift in Sources */,
 				3A4A789A280E11E400E2037D /* TransactionCell.swift in Sources */,
 				3A7082E827FF8BFE00990D0E /* LoginViewController.swift in Sources */,
 				3A88871527F1D7E000D7E184 /* AddTransactionsViewController.swift in Sources */,

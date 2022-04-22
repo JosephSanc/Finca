@@ -11,6 +11,20 @@ import Firebase
 class TransactionsViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var monthTxtField: UITextField!
+    @IBOutlet var dayTxtField: UITextField!
+    @IBOutlet var yearTxtField: UITextField!
+    
+    let monthPicker = UIPickerView()
+    let dayPicker = UIPickerView()
+    let yearPicker = UIPickerView()
+    
+    let months = ["January", "February", "March", "April",
+                  "May", "June", "July", "August",
+                  "September", "October","November", "December"]
+    
+    let daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    
     
     let prices = [
         "12.00",
@@ -43,7 +57,19 @@ class TransactionsViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: K.transactionNibName)
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        monthPicker.delegate = self
+        monthPicker.dataSource = self
+        dayPicker.delegate = self
+        dayPicker.dataSource = self
+        
+        monthTxtField.text = "Month"
+        monthTxtField.inputView = monthPicker
+        monthTxtField.textAlignment = .center
+        dayTxtField.text = "Day"
+        dayTxtField.inputView = dayPicker
+        dayTxtField.textAlignment = .center
+        
     }
     
     //TODO: Delete this
@@ -78,6 +104,23 @@ extension TransactionsViewController: UITableViewDataSource {
         
         return cell
     }
+}
+
+extension TransactionsViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return months.count
+    }
     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return months[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        monthTxtField.text = months[row]
+        monthTxtField.resignFirstResponder()
+    }
 }
