@@ -43,9 +43,9 @@ class TransactionsViewController: UIViewController {
     let dayPicker = UIPickerView()
     let yearPicker = UIPickerView()
     
-    let monthPickerDelegate = MonthPickerDelegate()
-    let dayPickerDelegate = DayPickerDelegate()
-    let yearPickerDelegate = YearPickerDelegate()
+    lazy var monthPickerDelegate = MonthPickerDelegate(monthTxtField)
+    lazy var dayPickerDelegate = DayPickerDelegate(dayTxtField)
+    lazy var yearPickerDelegate = YearPickerDelegate(yearTxtField)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,25 +57,21 @@ class TransactionsViewController: UIViewController {
         
         monthPicker.delegate = monthPickerDelegate
         monthPicker.dataSource = monthPickerDelegate
+        monthTxtField.text = "Month"
         monthTxtField.inputView = monthPicker
         monthTxtField.textAlignment = .center
         
         dayPicker.delegate = dayPickerDelegate
         dayPicker.dataSource = dayPickerDelegate
+        dayTxtField.text = "Day"
         dayTxtField.inputView = dayPicker
         dayTxtField.textAlignment = .center
         
         yearPicker.delegate = yearPickerDelegate
         yearPicker.dataSource = yearPickerDelegate
+        yearTxtField.text = "Year"
         yearTxtField.inputView = yearPicker
         yearTxtField.textAlignment = .center
-    }
-    
-    
-    func setUpPickers(){
-
-        
-
     }
 }
 
