@@ -21,13 +21,11 @@ class TransactionsViewController: UIViewController {
     var companies: [String] = []
     var categories: [String] = []
     
-    let months = ["January", "February", "March", "April",
+    let months = ["Month", "January", "February", "March", "April",
                   "May", "June", "July", "August",
                   "September", "October","November", "December"]
-    
-    let days: [Int] = (0...31).map {Int(String($0))!}
-    
-    let years: [Int] = (2020...Calendar.current.component(.year, from: Date())).map {Int(String($0))!}
+    var days: [String] = ((1...31).map {String($0)})
+    var years: [String] = ((2020...Calendar.current.component(.year, from: Date())).map {String($0)})
     
     let monthPicker = UIPickerView()
     let dayPicker = UIPickerView()
@@ -40,6 +38,9 @@ class TransactionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        days.insert("Day", at: 0)
+        years.insert("Year", at: 0)
+        
         hideKeyboardWhenTappedAround()
         
         let nib = UINib(nibName: K.transactionNibName, bundle: nil)
@@ -74,11 +75,47 @@ class TransactionsViewController: UIViewController {
         guard let userID = Auth.auth().currentUser?.uid else { return }
         
         let month = DateHelper().getMonthNum(monthTxtField.text!)
-        if month == -1 {
-            print("Need to select valid month")
-            return
-        }
+        let day = dayTxtField.text!
+        let year = yearTxtField.text!
         
+        if year != "Year" && month != 1 && day == "Day" {
+            yearOnly(year: Int(year)!, userID: userID)
+        } else if month != -1 && day == "Day" && year == "Year" {
+            monthOnly(month: month, userID: userID)
+        } else if month != -1 && day != "Day" && year == "Year" {
+            monthAndDay(month: month, day: Int(day)!, userID: userID)
+        } else if month != -1 && day == "Day" && year != "Year" {
+            monthAndYear(month: month, year: Int(year)!, userID: userID)
+        } else if month != -1 && day != "Day" && year != "Year" {
+            monthDayAndYear(month: month, day: Int(day)!, year: Int(year)!, userID: userID)
+        }
+    }
+    
+    //Method for each date filled scenario
+    func yearOnly(year: Int, userID: String){
+        db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).whereField("year", isEqualTo: year).getDocuments { querySnapshot, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let month = document.data()["month"] as! Int
+                    let day = document.data()["day"] as! Int
+                    let year = document.data()["year"] as! Int
+                    let amount = document.data()["amount"] as! Float
+                    let company = document.data()["company"] as! String
+                    let category = document.data()["category"] as! String
+                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.amounts.append(amount)
+                    self.companies.append(company)
+                    self.categories.append(category)
+                    self.tableView.reloadData()
+                    print("\(document.documentID) => \(transaction)")
+                }
+            }
+        }
+    }
+    
+    func monthOnly(month: Int, userID: String){
         db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).whereField("month", isEqualTo: month).getDocuments { querySnapshot, err in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -100,6 +137,76 @@ class TransactionsViewController: UIViewController {
             }
         }
     }
+    
+    func monthAndDay(month: Int, day: Int, userID: String){
+        db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).whereField("month", isEqualTo: month).whereField("day", isEqualTo: day).getDocuments { querySnapshot, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let month = document.data()["month"] as! Int
+                    let day = document.data()["day"] as! Int
+                    let year = document.data()["year"] as! Int
+                    let amount = document.data()["amount"] as! Float
+                    let company = document.data()["company"] as! String
+                    let category = document.data()["category"] as! String
+                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.amounts.append(amount)
+                    self.companies.append(company)
+                    self.categories.append(category)
+                    self.tableView.reloadData()
+                    print("\(document.documentID) => \(transaction)")
+                }
+            }
+        }
+    }
+    
+    func monthAndYear(month: Int, year: Int, userID: String){
+        db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).whereField("month", isEqualTo: month).whereField("year", isEqualTo: year).getDocuments { querySnapshot, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let month = document.data()["month"] as! Int
+                    let day = document.data()["day"] as! Int
+                    let year = document.data()["year"] as! Int
+                    let amount = document.data()["amount"] as! Float
+                    let company = document.data()["company"] as! String
+                    let category = document.data()["category"] as! String
+                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.amounts.append(amount)
+                    self.companies.append(company)
+                    self.categories.append(category)
+                    self.tableView.reloadData()
+                    print("\(document.documentID) => \(transaction)")
+                }
+            }
+        }
+    }
+    
+    func monthDayAndYear(month: Int, day: Int, year: Int, userID: String){
+        db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).whereField("month", isEqualTo: month).whereField("day", isEqualTo: day).whereField("year", isEqualTo: year).getDocuments { querySnapshot, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let month = document.data()["month"] as! Int
+                    let day = document.data()["day"] as! Int
+                    let year = document.data()["year"] as! Int
+                    let amount = document.data()["amount"] as! Float
+                    let company = document.data()["company"] as! String
+                    let category = document.data()["category"] as! String
+                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.amounts.append(amount)
+                    self.companies.append(company)
+                    self.categories.append(category)
+                    self.tableView.reloadData()
+                    print("\(document.documentID) => \(transaction)")
+                }
+            }
+        }
+    }
+    
 }
 
 extension TransactionsViewController: UITableViewDelegate {

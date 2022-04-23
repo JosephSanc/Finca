@@ -37,10 +37,10 @@ class MonthPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSourc
 
 //TODO: Make it so that you can change the amount of days depending on the month
 class DayPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-    let days: [Int]
+    let days: [String]
     let dayTxtField: UITextField
 
-    init(_ days: [Int], _ dayTxtField: UITextField){
+    init(_ days: [String], _ dayTxtField: UITextField){
         self.days = days
         self.dayTxtField = dayTxtField
     }
@@ -54,20 +54,20 @@ class DayPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource 
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(days[row])
+        return days[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        dayTxtField.text = String(days[row])
+        dayTxtField.text = days[row]
         dayTxtField.resignFirstResponder()
     }
 }
 
 class YearPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource{
-    let years: [Int]
+    let years: [String]
     let yearTxtField: UITextField
 
-    init(_ years: [Int], _ dayTxtField: UITextField){
+    init(_ years: [String], _ dayTxtField: UITextField){
         self.years = years
         self.yearTxtField = dayTxtField
     }
@@ -81,11 +81,11 @@ class YearPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(years[row])
+        return years[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        yearTxtField.text = String(years[row])
+        yearTxtField.text = years[row]
         yearTxtField.resignFirstResponder()
     }
 }
