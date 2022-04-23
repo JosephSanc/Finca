@@ -13,6 +13,16 @@ struct DateHelper {
         return monthMap[monthNum]!
     }
     
+    func getMonthNum(_ monthStr: String) -> Int{
+        let monthMap: [String: Int] = ["January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6, "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12]
+        if let monthNum = monthMap[monthStr] {
+            return monthNum
+        } else {
+            print("ERROR: MonthStr = \(monthStr)")
+            return -1
+        }
+    }
+    
     func isLeapYear(_ year: Int) -> Bool {
         
         let isLeapYear = ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0))

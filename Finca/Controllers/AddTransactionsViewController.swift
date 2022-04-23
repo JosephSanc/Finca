@@ -86,7 +86,7 @@ class AddTransactionViewController: UIViewController {
         let dateHelper = DateFormatChanger(dateStr: dateTxtField.text!)
 
         let day = dateHelper.getDay()
-        let month = dateHelper.getMonthNumber()
+        let month = dateHelper.getMonth()
         let year = dateHelper.getYear()
 
         guard let amount = Float(amountInput.text!) else { return }

@@ -47,8 +47,6 @@ class LandingViewController: UIViewController {
 //                print("Document does not exist in cache")
 //            }
 //        }
-        
-        print("hello")
     }
     /*
     // MARK: - Navigation

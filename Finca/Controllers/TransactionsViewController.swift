@@ -15,29 +15,11 @@ class TransactionsViewController: UIViewController {
     @IBOutlet var dayTxtField: UITextField!
     @IBOutlet var yearTxtField: UITextField!
     
-    let prices = [
-        "12.00",
-        "38.99",
-        "42.50",
-        "10.00",
-        "123.33"
-    ]
+    let db = Firestore.firestore()
     
-    let companies = [
-        "Amazon",
-        "Walmart",
-        "Costco",
-        "Amazon",
-        "The Booga looga store"
-    ]
-    
-    let categories = [
-        "Shopping",
-        "Groceries",
-        "Groceries",
-        "Health",
-        "Groceries"
-    ]
+    var amounts: [Float] = []
+    var companies: [String] = []
+    var categories: [String] = []
     
     let months = ["January", "February", "March", "April",
                   "May", "June", "July", "August",
@@ -86,6 +68,38 @@ class TransactionsViewController: UIViewController {
         yearTxtField.inputView = yearPicker
         yearTxtField.textAlignment = .center
     }
+    
+    
+    @IBAction func getTransactionInfoBtn(_ sender: UIButton) {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        let month = DateHelper().getMonthNum(monthTxtField.text!)
+        if month == -1 {
+            print("Need to select valid month")
+            return
+        }
+        
+        db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).whereField("month", isEqualTo: month).getDocuments { querySnapshot, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let month = document.data()["month"] as! Int
+                    let day = document.data()["day"] as! Int
+                    let year = document.data()["year"] as! Int
+                    let amount = document.data()["amount"] as! Float
+                    let company = document.data()["company"] as! String
+                    let category = document.data()["category"] as! String
+                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.amounts.append(amount)
+                    self.companies.append(company)
+                    self.categories.append(category)
+                    self.tableView.reloadData()
+                    print("\(document.documentID) => \(transaction)")
+                }
+            }
+        }
+    }
 }
 
 extension TransactionsViewController: UITableViewDelegate {
@@ -102,12 +116,14 @@ extension TransactionsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.transactionNibName, for: indexPath) as! TransactionCell
         
-        cell.amountLabel.text = prices[indexPath.row]
+        cell.amountLabel.text = String(amounts[indexPath.row])
         cell.categoryLabel.text = categories[indexPath.row]
         cell.companyLabel.text = companies[indexPath.row]
         
         return cell
     }
+    
+    
 }
 
 extension TransactionsViewController: UITextFieldDelegate {
