@@ -39,17 +39,27 @@ class TransactionsViewController: UIViewController {
         "Groceries"
     ]
     
+    let months = ["January", "February", "March", "April",
+                  "May", "June", "July", "August",
+                  "September", "October","November", "December"]
+    
+    let days: [Int] = (0...31).map {Int(String($0))!}
+    
+    let years: [Int] = (2020...Calendar.current.component(.year, from: Date())).map {Int(String($0))!}
+    
     let monthPicker = UIPickerView()
     let dayPicker = UIPickerView()
     let yearPicker = UIPickerView()
     
-    lazy var monthPickerDelegate = MonthPickerDelegate(monthTxtField)
-    lazy var dayPickerDelegate = DayPickerDelegate(dayTxtField)
-    lazy var yearPickerDelegate = YearPickerDelegate(yearTxtField)
+    lazy var monthPickerDelegate = MonthPickerDelegate(months, monthTxtField)
+    lazy var dayPickerDelegate = DayPickerDelegate(days, dayTxtField)
+    lazy var yearPickerDelegate = YearPickerDelegate(years, yearTxtField)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        hideKeyboardWhenTappedAround()
+        
         let nib = UINib(nibName: K.transactionNibName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: K.transactionNibName)
         tableView.delegate = self
@@ -57,18 +67,21 @@ class TransactionsViewController: UIViewController {
         
         monthPicker.delegate = monthPickerDelegate
         monthPicker.dataSource = monthPickerDelegate
+        monthTxtField.delegate = self
         monthTxtField.text = "Month"
         monthTxtField.inputView = monthPicker
         monthTxtField.textAlignment = .center
         
         dayPicker.delegate = dayPickerDelegate
         dayPicker.dataSource = dayPickerDelegate
+        dayTxtField.delegate = self
         dayTxtField.text = "Day"
         dayTxtField.inputView = dayPicker
         dayTxtField.textAlignment = .center
         
         yearPicker.delegate = yearPickerDelegate
         yearPicker.dataSource = yearPickerDelegate
+        yearTxtField.delegate = self
         yearTxtField.text = "Year"
         yearTxtField.inputView = yearPicker
         yearTxtField.textAlignment = .center
@@ -95,5 +108,24 @@ extension TransactionsViewController: UITableViewDataSource {
         
         return cell
     }
+}
+
+extension TransactionsViewController: UITextFieldDelegate {
+    // Return button tapped
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       textField.resignFirstResponder()
+       return true
+   }
+
+   // Around tapped
+   func hideKeyboardWhenTappedAround() {
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddTransactionViewController.dismissKeyboard))
+       tap.cancelsTouchesInView = false
+       view.addGestureRecognizer(tap)
+   }
+
+   @objc func dismissKeyboard() {
+       view.endEditing(true)
+   }
 }
 

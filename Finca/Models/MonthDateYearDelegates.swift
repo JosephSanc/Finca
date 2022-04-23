@@ -9,12 +9,11 @@ import Foundation
 import UIKit
 
 class MonthPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-    let months = ["January", "February", "March", "April",
-                  "May", "June", "July", "August",
-                  "September", "October","November", "December"]
+    let months: [String]
     let monthTxtField: UITextField
     
-    init(_ monthTxtField: UITextField){
+    init(_ months: [String], _ monthTxtField: UITextField){
+        self.months = months
         self.monthTxtField = monthTxtField
     }
     
@@ -38,10 +37,11 @@ class MonthPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSourc
 
 //TODO: Make it so that you can change the amount of days depending on the month
 class DayPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-    let days: [Int] = (0...31).map {Int(String($0))!}
+    let days: [Int]
     let dayTxtField: UITextField
 
-    init(_ dayTxtField: UITextField){
+    init(_ days: [Int], _ dayTxtField: UITextField){
+        self.days = days
         self.dayTxtField = dayTxtField
     }
     
@@ -64,10 +64,11 @@ class DayPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource 
 }
 
 class YearPickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource{
-    let years: [Int] = (2020...Calendar.current.component(.year, from: Date())).map {Int(String($0))!}
+    let years: [Int]
     let yearTxtField: UITextField
 
-    init(_ dayTxtField: UITextField){
+    init(_ years: [Int], _ dayTxtField: UITextField){
+        self.years = years
         self.yearTxtField = dayTxtField
     }
     
