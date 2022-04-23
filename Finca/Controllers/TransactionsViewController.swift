@@ -15,17 +15,6 @@ class TransactionsViewController: UIViewController {
     @IBOutlet var dayTxtField: UITextField!
     @IBOutlet var yearTxtField: UITextField!
     
-    let monthPicker = UIPickerView()
-    let dayPicker = UIPickerView()
-    let yearPicker = UIPickerView()
-    
-    let months = ["January", "February", "March", "April",
-                  "May", "June", "July", "August",
-                  "September", "October","November", "December"]
-    
-    let daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    
-    
     let prices = [
         "12.00",
         "38.99",
@@ -50,6 +39,14 @@ class TransactionsViewController: UIViewController {
         "Groceries"
     ]
     
+    let monthPicker = UIPickerView()
+    let dayPicker = UIPickerView()
+    let yearPicker = UIPickerView()
+    
+    let monthPickerDelegate = MonthPickerDelegate()
+    let dayPickerDelegate = DayPickerDelegate()
+    let yearPickerDelegate = YearPickerDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,30 +55,28 @@ class TransactionsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        monthPicker.delegate = self
-        monthPicker.dataSource = self
-        dayPicker.delegate = self
-        dayPicker.dataSource = self
-        
-        monthTxtField.text = "Month"
+        monthPicker.delegate = monthPickerDelegate
+        monthPicker.dataSource = monthPickerDelegate
         monthTxtField.inputView = monthPicker
         monthTxtField.textAlignment = .center
-        dayTxtField.text = "Day"
+        
+        dayPicker.delegate = dayPickerDelegate
+        dayPicker.dataSource = dayPickerDelegate
         dayTxtField.inputView = dayPicker
         dayTxtField.textAlignment = .center
         
+        yearPicker.delegate = yearPickerDelegate
+        yearPicker.dataSource = yearPickerDelegate
+        yearTxtField.inputView = yearPicker
+        yearTxtField.textAlignment = .center
     }
     
-    //TODO: Delete this
-    @IBAction func TestUserBtn(_ sender: UIButton) {
+    
+    func setUpPickers(){
+
         
-        let user = Auth.auth().currentUser
-        if let user = user {
-            let email = user.email
-            print(UserHelper.getFilteredEmail(email!))
-        }
+
     }
-    
 }
 
 extension TransactionsViewController: UITableViewDelegate {
@@ -106,21 +101,3 @@ extension TransactionsViewController: UITableViewDataSource {
     }
 }
 
-extension TransactionsViewController: UIPickerViewDelegate, UIPickerViewDataSource{
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return months.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return months[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        monthTxtField.text = months[row]
-        monthTxtField.resignFirstResponder()
-    }
-}
