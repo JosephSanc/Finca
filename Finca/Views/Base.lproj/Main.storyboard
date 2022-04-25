@@ -405,6 +405,14 @@
                                     <action selector="getTransactionInfoBtn:" destination="MLO-aj-sKC" eventType="touchUpInside" id="IA9-yu-X82"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avq-W0-NRo">
+                                <rect key="frame" x="210" y="809" width="66" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Delete"/>
+                                <connections>
+                                    <action selector="TestDelete:" destination="MLO-aj-sKC" eventType="touchUpInside" id="91n-nL-ySc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VK3-4J-VCO"/>
                         <color key="backgroundColor" name="BrandWhite"/>
@@ -413,14 +421,18 @@
                             <constraint firstItem="8D5-Eq-Nsx" firstAttribute="top" secondItem="VK3-4J-VCO" secondAttribute="top" constant="50" id="83L-GM-Ba3"/>
                             <constraint firstItem="vUn-fz-saL" firstAttribute="top" secondItem="8D5-Eq-Nsx" secondAttribute="bottom" constant="13" id="Dyu-b7-o26"/>
                             <constraint firstItem="BYv-yb-l3E" firstAttribute="top" secondItem="VK3-4J-VCO" secondAttribute="top" constant="8" id="ELi-k9-B0a"/>
+                            <constraint firstItem="rlG-T7-DPe" firstAttribute="leading" secondItem="avq-W0-NRo" secondAttribute="trailing" constant="58" id="Ro7-EC-t57"/>
                             <constraint firstItem="8D5-Eq-Nsx" firstAttribute="leading" secondItem="VK3-4J-VCO" secondAttribute="leading" id="SH4-y0-lYE"/>
                             <constraint firstItem="vUn-fz-saL" firstAttribute="leading" secondItem="kSQ-D3-gXk" secondAttribute="leadingMargin" id="WUY-4O-n4e"/>
                             <constraint firstItem="8D5-Eq-Nsx" firstAttribute="top" secondItem="BYv-yb-l3E" secondAttribute="bottom" constant="8" id="ddt-sL-ovK"/>
                             <constraint firstItem="vUn-fz-saL" firstAttribute="centerY" secondItem="rlG-T7-DPe" secondAttribute="centerY" id="eZQ-g3-qMT"/>
+                            <constraint firstItem="avq-W0-NRo" firstAttribute="centerY" secondItem="rlG-T7-DPe" secondAttribute="centerY" id="f1R-Cn-xOu"/>
                             <constraint firstItem="8D5-Eq-Nsx" firstAttribute="trailing" secondItem="VK3-4J-VCO" secondAttribute="trailing" id="gnR-8n-cFZ"/>
                             <constraint firstAttribute="bottom" secondItem="8D5-Eq-Nsx" secondAttribute="bottom" constant="100" id="hRT-sF-Y1O"/>
+                            <constraint firstItem="avq-W0-NRo" firstAttribute="top" secondItem="vUn-fz-saL" secondAttribute="top" id="kqK-Xp-eUF"/>
                             <constraint firstItem="BYv-yb-l3E" firstAttribute="centerX" secondItem="kSQ-D3-gXk" secondAttribute="centerX" id="neZ-zu-LQV"/>
                             <constraint firstItem="rlG-T7-DPe" firstAttribute="top" secondItem="8D5-Eq-Nsx" secondAttribute="bottom" constant="8" symbolic="YES" id="u4p-qU-nuX"/>
+                            <constraint firstItem="avq-W0-NRo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUn-fz-saL" secondAttribute="trailing" constant="8" symbolic="YES" id="vi9-id-FkA"/>
                             <constraint firstItem="rlG-T7-DPe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VK3-4J-VCO" secondAttribute="leading" symbolic="YES" id="wJS-7G-0GN"/>
                             <constraint firstItem="rlG-T7-DPe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUn-fz-saL" secondAttribute="trailing" constant="8" symbolic="YES" id="yH7-fD-FBx"/>
                         </constraints>

@@ -78,7 +78,7 @@ class TransactionsViewController: UIViewController {
         let day = dayTxtField.text!
         let year = yearTxtField.text!
         
-        if year != "Year" && month != 1 && day == "Day" {
+        if year != "Year" && month == -1 && day == "Day" {
             yearOnly(year: Int(year)!, userID: userID)
         } else if month != -1 && day == "Day" && year == "Year" {
             monthOnly(month: month, userID: userID)
@@ -89,6 +89,10 @@ class TransactionsViewController: UIViewController {
         } else if month != -1 && day != "Day" && year != "Year" {
             monthDayAndYear(month: month, day: Int(day)!, year: Int(year)!, userID: userID)
         }
+        amounts.removeAll()
+        categories.removeAll()
+        companies.removeAll()
+        tableView.reloadData()
     }
     
     //Method for each date filled scenario
@@ -222,15 +226,13 @@ extension TransactionsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.transactionNibName, for: indexPath) as! TransactionCell
-        
+
         cell.amountLabel.text = String(amounts[indexPath.row])
         cell.categoryLabel.text = categories[indexPath.row]
         cell.companyLabel.text = companies[indexPath.row]
         
         return cell
     }
-    
-    
 }
 
 extension TransactionsViewController: UITextFieldDelegate {
