@@ -31,10 +31,6 @@ class TransactionsViewController: UIViewController {
     let dayPicker = UIPickerView()
     let yearPicker = UIPickerView()
     
-    lazy var monthPickerDelegate = PickerDelegate(months, monthTxtField)
-    lazy var dayPickerDelegate = PickerDelegate(days, dayTxtField)
-    lazy var yearPickerDelegate = PickerDelegate(years, yearTxtField)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,53 +44,29 @@ class TransactionsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        monthPicker.delegate = monthPickerDelegate
-        monthPicker.dataSource = monthPickerDelegate
+        monthPicker.delegate = self
+        monthPicker.dataSource = self
         monthTxtField.delegate = self
         monthTxtField.text = "Month"
         monthTxtField.inputView = monthPicker
         monthTxtField.textAlignment = .center
         
-        dayPicker.delegate = dayPickerDelegate
-        dayPicker.dataSource = dayPickerDelegate
+        dayPicker.delegate = self
+        dayPicker.dataSource = self
         dayTxtField.delegate = self
         dayTxtField.text = "Day"
         dayTxtField.inputView = dayPicker
         dayTxtField.textAlignment = .center
         
-        yearPicker.delegate = yearPickerDelegate
-        yearPicker.dataSource = yearPickerDelegate
+        yearPicker.delegate = self
+        yearPicker.dataSource = self
         yearTxtField.delegate = self
         yearTxtField.text = "Year"
         yearTxtField.inputView = yearPicker
         yearTxtField.textAlignment = .center
     }
     
-    func tempMethod(){
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-        
-        let month = DateHelper().getMonthNum(monthTxtField.text!)
-        let day = dayTxtField.text!
-        let year = yearTxtField.text!
-        
-        if year != "Year" && month == -1 && day == "Day" {
-            yearOnly(year: Int(year)!, userID: userID)
-        } else if month != -1 && day == "Day" && year == "Year" {
-            monthOnly(month: month, userID: userID)
-        } else if month != -1 && day != "Day" && year == "Year" {
-            monthAndDay(month: month, day: Int(day)!, userID: userID)
-        } else if month != -1 && day == "Day" && year != "Year" {
-            monthAndYear(month: month, year: Int(year)!, userID: userID)
-        } else if month != -1 && day != "Day" && year != "Year" {
-            monthDayAndYear(month: month, day: Int(day)!, year: Int(year)!, userID: userID)
-        }
-        amounts.removeAll()
-        categories.removeAll()
-        companies.removeAll()
-        tableView.reloadData()
-    }
-    
-    @IBAction func getTransactionInfoBtn(_ sender: UIButton) {
+    func showTransactions(){
         guard let userID = Auth.auth().currentUser?.uid else { return }
         
         let month = DateHelper().getMonthNum(monthTxtField.text!)
@@ -236,42 +208,49 @@ class TransactionsViewController: UIViewController {
     
 }
 
-class PickerDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-    let dates: [String]
-    let dateTxtField: UITextField
-    
-    init(_ dates: [String], _ dateTxtField: UITextField){
-        self.dates = dates
-        self.dateTxtField = dateTxtField
-    }
-    
+extension TransactionsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dates.count
+        if pickerView == monthPicker {
+            return months.count
+        } else if pickerView == dayPicker {
+            return days.count
+        } else {
+            return years.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dates[row]
+        if pickerView == monthPicker {
+            return months[row]
+        } else if pickerView == dayPicker {
+            return days[row]
+        } else {
+            return years[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        dateTxtField.text = String(dates[row])
-        dateTxtField.resignFirstResponder()
+        if pickerView == monthPicker {
+            monthTxtField.text = String(months[row])
+            monthTxtField.resignFirstResponder()
+        } else if pickerView == dayPicker {
+            dayTxtField.text = String(days[row])
+            dayTxtField.resignFirstResponder()
+        } else {
+            yearTxtField.text = String(years[row])
+            yearTxtField.resignFirstResponder()
+        }
+        showTransactions()
     }
 }
 
 extension TransactionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Tapped!!")
-    }
-}
-
-extension TransactionsViewController: ChangeMonthDelegate {
-    func monthDidChange() {
-        tempMethod()
     }
 }
 
