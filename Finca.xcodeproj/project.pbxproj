@@ -29,6 +29,7 @@
 		3A88871D27F1D7E200D7E184 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A88871B27F1D7E200D7E184 /* LaunchScreen.storyboard */; };
 		3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88874B27F8D04500D7E184 /* Transaction.swift */; };
 		3AA2154C280B3AC5006826D3 /* DateFormatChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */; };
+		3AB01CE8282BF96600EED521 /* EditTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB01CE7282BF96600EED521 /* EditTransactionViewController.swift */; };
 		508C703108D55D7247F6A302 /* Pods_Finca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		3A88871E27F1D7E200D7E184 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A88874B27F8D04500D7E184 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatChanger.swift; sourceTree = "<group>"; };
+		3AB01CE7282BF96600EED521 /* EditTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionViewController.swift; sourceTree = "<group>"; };
 		5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Finca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D82E2255FCAD12DC5AF8D2C /* Pods-Finca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.debug.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 				3A7082E927FF8C1C00990D0E /* RegisterViewController.swift */,
 				3A7082EB27FF8C3100990D0E /* LandingViewController.swift */,
 				3A84D73D28020CCB00F3BD1F /* TransactionsViewController.swift */,
+				3AB01CE7282BF96600EED521 /* EditTransactionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A876C7B2812D10400215965 /* DateHelper.swift in Sources */,
+				3AB01CE8282BF96600EED521 /* EditTransactionViewController.swift in Sources */,
 				3A4A789A280E11E400E2037D /* TransactionCell.swift in Sources */,
 				3A7082E827FF8BFE00990D0E /* LoginViewController.swift in Sources */,
 				3A88871527F1D7E000D7E184 /* AddTransactionsViewController.swift in Sources */,

@@ -20,6 +20,7 @@ class TransactionsViewController: UIViewController {
     var amounts: [Float] = []
     var companies: [String] = []
     var categories: [String] = []
+    var transactionIDs: [String] = []
     
     let months = ["Month", "January", "February", "March", "April",
                   "May", "June", "July", "August",
@@ -30,6 +31,8 @@ class TransactionsViewController: UIViewController {
     let monthPicker = UIPickerView()
     let dayPicker = UIPickerView()
     let yearPicker = UIPickerView()
+    
+    var currentCellRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +67,15 @@ class TransactionsViewController: UIViewController {
         yearTxtField.text = "Year"
         yearTxtField.inputView = yearPicker
         yearTxtField.textAlignment = .center
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditTransaction" {
+            let editTransactionVC = segue.destination as! EditTransactionViewController
+            editTransactionVC.amountStr = String(amounts[currentCellRow])
+            editTransactionVC.companyStr = companies[currentCellRow]
+            editTransactionVC.categoryStr = categories[currentCellRow]
+        }
     }
     
     func showTransactions(){
@@ -106,6 +118,7 @@ class TransactionsViewController: UIViewController {
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
+                    self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
                     print("\(document.documentID) => \(transaction)")
                 }
@@ -129,6 +142,7 @@ class TransactionsViewController: UIViewController {
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
+                    self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
                     print("\(document.documentID) => \(transaction)")
                 }
@@ -152,6 +166,7 @@ class TransactionsViewController: UIViewController {
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
+                    self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
                     print("\(document.documentID) => \(transaction)")
                 }
@@ -175,6 +190,7 @@ class TransactionsViewController: UIViewController {
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
+                    self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
                     print("\(document.documentID) => \(transaction)")
                 }
@@ -198,6 +214,7 @@ class TransactionsViewController: UIViewController {
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
+                    self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
                     print("\(document.documentID) => \(transaction)")
                 }
@@ -267,22 +284,30 @@ extension TransactionsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
         if editingStyle == .delete {
             tableView.beginUpdates()
             
-            
-            
+            db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).document(transactionIDs[indexPath.row]).delete() { err in
+                
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
             amounts.remove(at: indexPath.row)
             categories.remove(at: indexPath.row)
             companies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
             tableView.endUpdates()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Tapped!!")
+        currentCellRow = indexPath.row
+        performSegue(withIdentifier: "EditTransaction", sender: self)
     }
 }
 

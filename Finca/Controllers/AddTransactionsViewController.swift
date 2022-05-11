@@ -80,7 +80,6 @@ class AddTransactionViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-    //TODO: Refactor this to take user input date instead of the current date like I have below
     @IBAction func addTransaction(_ sender: Any) {
 
         let dateHelper = DateFormatChanger(dateStr: dateTxtField.text!)
