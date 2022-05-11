@@ -87,7 +87,6 @@ class TransactionsViewController: UIViewController {
         amounts.removeAll()
         categories.removeAll()
         companies.removeAll()
-        tableView.reloadData()
     }
     
     //Method for each date filled scenario
@@ -248,13 +247,7 @@ extension TransactionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
 }
 
-extension TransactionsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Tapped!!")
-    }
-}
-
-extension TransactionsViewController: UITableViewDataSource {
+extension TransactionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return companies.count
     }
@@ -267,6 +260,29 @@ extension TransactionsViewController: UITableViewDataSource {
         cell.companyLabel.text = companies[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            
+            
+            
+            amounts.remove(at: indexPath.row)
+            categories.remove(at: indexPath.row)
+            companies.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            tableView.endUpdates()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Tapped!!")
     }
 }
 
