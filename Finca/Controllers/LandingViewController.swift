@@ -32,7 +32,7 @@ class LandingViewController: UIViewController {
                     let amount = document.data()["amount"] as! Float
                     let company = document.data()["company"] as! String
                     let category = document.data()["category"] as! String
-                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
                     print("\(document.documentID) => \(transaction)")
                 }
             }

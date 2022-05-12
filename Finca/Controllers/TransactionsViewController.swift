@@ -17,6 +17,7 @@ class TransactionsViewController: UIViewController {
     
     let db = Firestore.firestore()
     
+    var transactions: [Transaction] = []
     var amounts: [Float] = []
     var companies: [String] = []
     var categories: [String] = []
@@ -99,6 +100,7 @@ class TransactionsViewController: UIViewController {
         amounts.removeAll()
         categories.removeAll()
         companies.removeAll()
+        tableView.reloadData()
     }
     
     //Method for each date filled scenario
@@ -114,7 +116,8 @@ class TransactionsViewController: UIViewController {
                     let amount = document.data()["amount"] as! Float
                     let company = document.data()["company"] as! String
                     let category = document.data()["category"] as! String
-                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.transactions.append(transaction)
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
@@ -138,7 +141,8 @@ class TransactionsViewController: UIViewController {
                     let amount = document.data()["amount"] as! Float
                     let company = document.data()["company"] as! String
                     let category = document.data()["category"] as! String
-                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.transactions.append(transaction)
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
@@ -162,7 +166,8 @@ class TransactionsViewController: UIViewController {
                     let amount = document.data()["amount"] as! Float
                     let company = document.data()["company"] as! String
                     let category = document.data()["category"] as! String
-                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.transactions.append(transaction)
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
@@ -186,7 +191,8 @@ class TransactionsViewController: UIViewController {
                     let amount = document.data()["amount"] as! Float
                     let company = document.data()["company"] as! String
                     let category = document.data()["category"] as! String
-                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.transactions.append(transaction)
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
@@ -210,7 +216,8 @@ class TransactionsViewController: UIViewController {
                     let amount = document.data()["amount"] as! Float
                     let company = document.data()["company"] as! String
                     let category = document.data()["category"] as! String
-                    let transaction = Transaction(month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
+                    self.transactions.append(transaction)
                     self.amounts.append(amount)
                     self.companies.append(company)
                     self.categories.append(category)
@@ -266,15 +273,15 @@ extension TransactionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
 
 extension TransactionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return companies.count
+        return transactions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.transactionNibName, for: indexPath) as! TransactionCell
 
-        cell.amountLabel.text = String(amounts[indexPath.row])
-        cell.categoryLabel.text = categories[indexPath.row]
-        cell.companyLabel.text = companies[indexPath.row]
+        cell.amountLabel.text = String(transactions[indexPath.row].amount)
+        cell.categoryLabel.text = transactions[indexPath.row].category
+        cell.companyLabel.text = transactions[indexPath.row].company
         
         return cell
     }
@@ -297,9 +304,7 @@ extension TransactionsViewController: UITableViewDelegate, UITableViewDataSource
                     print("Document successfully removed!")
                 }
             }
-            amounts.remove(at: indexPath.row)
-            categories.remove(at: indexPath.row)
-            companies.remove(at: indexPath.row)
+            transactions.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }

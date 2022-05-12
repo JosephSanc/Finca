@@ -8,6 +8,7 @@
 import Foundation
 
 struct Transaction {
+    public let transactionID: String
     public let month: Int
     public let day: Int
     public let year: Int
