@@ -100,6 +100,7 @@ class TransactionsViewController: UIViewController {
         amounts.removeAll()
         categories.removeAll()
         companies.removeAll()
+        transactions.removeAll()
         tableView.reloadData()
     }
     
