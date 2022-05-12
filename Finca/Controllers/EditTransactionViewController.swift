@@ -16,10 +16,9 @@ class EditTransactionViewController: UIViewController {
     @IBOutlet weak var category: UITextField!
     @IBOutlet weak var date: UITextField!
     
-    var amountStr = ""
-    var companyStr = ""
-    var categoryStr = ""
+    var transaction: Transaction = Transaction(transactionID: "", month: 0, day: 0, year: 0, amount: 0.0, company: "", category: "")
 
+    var docRef: DocumentReference!
     private var db = Firestore.firestore()
     
     let datePicker = UIDatePicker()
@@ -30,9 +29,10 @@ class EditTransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        amount.text = amountStr
-        company.text = companyStr
-        category.text = categoryStr
+        amount.text = String(transaction.amount)
+        company.text = transaction.company
+        category.text = transaction.category
+        date.text = "\(DateHelper().getMonthStr(transaction.month)), \(transaction.day), \(transaction.year)"
         
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
@@ -48,7 +48,22 @@ class EditTransactionViewController: UIViewController {
     }
     
     @IBAction func sayHello(_ sender: UIButton){
-        print("Hello")
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+
+        let transactionID = transaction.transactionID
+
+        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(transactionID)")
+        
+        let dateFormatChange = DateFormatChanger(dateStr: date.text!)
+        transaction.amount = Float(amount.text!)!
+        transaction.company = company.text!
+        transaction.category = category.text!
+        transaction.day = dateFormatChange.getDay()
+        transaction.month = dateFormatChange.getMonth()
+        transaction.year = dateFormatChange.getYear()
+        
+        let dataToSave: [String: Any] = ["transactionID": transaction.transactionID, "amount": transaction.amount, "company": transaction.company, "category": transaction.category, "day": transaction.day, "month": transaction.month, "year": transaction.year]
+        docRef.setData(dataToSave)
     }
     
     func createDatePicker(){

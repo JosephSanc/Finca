@@ -37,25 +37,5 @@ class LandingViewController: UIViewController {
                 }
             }
         }
-//        let docRef = db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).document("AB5CFAD7-AB8B-4C49-A0C5-611989255CC3")
-//
-//        docRef.getDocument { (document, error) in
-//            if let document = document, document.exists {
-//                let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
-//                print("Cached document data: \(dataDescription)")
-//            } else {
-//                print("Document does not exist in cache")
-//            }
-//        }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

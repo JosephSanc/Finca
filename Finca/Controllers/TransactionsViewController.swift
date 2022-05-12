@@ -18,9 +18,6 @@ class TransactionsViewController: UIViewController {
     let db = Firestore.firestore()
     
     var transactions: [Transaction] = []
-    var amounts: [Float] = []
-    var companies: [String] = []
-    var categories: [String] = []
     var transactionIDs: [String] = []
     
     let months = ["Month", "January", "February", "March", "April",
@@ -70,12 +67,21 @@ class TransactionsViewController: UIViewController {
         yearTxtField.textAlignment = .center
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        monthPicker.selectRow(0, inComponent: 0, animated: false)
+        monthTxtField.text = months[0]
+        dayPicker.selectRow(0, inComponent: 0, animated: false)
+        dayTxtField.text = days[0]
+        yearPicker.selectRow(0, inComponent: 0, animated: false)
+        yearTxtField.text = years[0]
+        transactions.removeAll()
+        tableView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditTransaction" {
             let editTransactionVC = segue.destination as! EditTransactionViewController
-            editTransactionVC.amountStr = String(amounts[currentCellRow])
-            editTransactionVC.companyStr = companies[currentCellRow]
-            editTransactionVC.categoryStr = categories[currentCellRow]
+            editTransactionVC.transaction = transactions[currentCellRow]
         }
     }
     
@@ -97,9 +103,6 @@ class TransactionsViewController: UIViewController {
         } else if month != -1 && day != "Day" && year != "Year" {
             monthDayAndYear(month: month, day: Int(day)!, year: Int(year)!, userID: userID)
         }
-        amounts.removeAll()
-        categories.removeAll()
-        companies.removeAll()
         transactions.removeAll()
         tableView.reloadData()
     }
@@ -119,12 +122,8 @@ class TransactionsViewController: UIViewController {
                     let category = document.data()["category"] as! String
                     let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
                     self.transactions.append(transaction)
-                    self.amounts.append(amount)
-                    self.companies.append(company)
-                    self.categories.append(category)
                     self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
-                    print("\(document.documentID) => \(transaction)")
                 }
             }
         }
@@ -144,12 +143,8 @@ class TransactionsViewController: UIViewController {
                     let category = document.data()["category"] as! String
                     let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
                     self.transactions.append(transaction)
-                    self.amounts.append(amount)
-                    self.companies.append(company)
-                    self.categories.append(category)
                     self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
-                    print("\(document.documentID) => \(transaction)")
                 }
             }
         }
@@ -169,12 +164,8 @@ class TransactionsViewController: UIViewController {
                     let category = document.data()["category"] as! String
                     let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
                     self.transactions.append(transaction)
-                    self.amounts.append(amount)
-                    self.companies.append(company)
-                    self.categories.append(category)
                     self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
-                    print("\(document.documentID) => \(transaction)")
                 }
             }
         }
@@ -194,12 +185,8 @@ class TransactionsViewController: UIViewController {
                     let category = document.data()["category"] as! String
                     let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
                     self.transactions.append(transaction)
-                    self.amounts.append(amount)
-                    self.companies.append(company)
-                    self.categories.append(category)
                     self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
-                    print("\(document.documentID) => \(transaction)")
                 }
             }
         }
@@ -219,12 +206,8 @@ class TransactionsViewController: UIViewController {
                     let category = document.data()["category"] as! String
                     let transaction = Transaction(transactionID: document.documentID, month: month, day: day, year: year, amount: amount, company: company, category: category)
                     self.transactions.append(transaction)
-                    self.amounts.append(amount)
-                    self.companies.append(company)
-                    self.categories.append(category)
                     self.transactionIDs.append(document.documentID)
                     self.tableView.reloadData()
-                    print("\(document.documentID) => \(transaction)")
                 }
             }
         }
@@ -297,7 +280,7 @@ extension TransactionsViewController: UITableViewDelegate, UITableViewDataSource
         if editingStyle == .delete {
             tableView.beginUpdates()
             
-            db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).document(transactionIDs[indexPath.row]).delete() { err in
+            db.collection(K.UserCollection.collectionName).document(userID).collection(K.TransactionCollection.collectionName).document(transactions[indexPath.row].transactionID).delete() { err in
                 
                 if let err = err {
                     print("Error removing document: \(err)")

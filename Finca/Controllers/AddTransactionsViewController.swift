@@ -94,13 +94,13 @@ class AddTransactionViewController: UIViewController {
 
         guard let userID = Auth.auth().currentUser?.uid else { return }
 
-        let uuid = UUID().uuidString
+        let transactionID = UUID().uuidString
 
-        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(uuid)")
+        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(transactionID)")
 
-        let dataToSave: [String: Any] = ["amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
+        let dataToSave: [String: Any] = ["transactionID": transactionID, "amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
         docRef.setData(dataToSave)
-        print("Amount: \(amount), Company: \(company), Category: \(category), Month: \(month), Day: \(day), Year: \(year)")
+        print("TranctionID: \(transactionID), Amount: \(amount), Company: \(company), Category: \(category), Month: \(month), Day: \(day), Year: \(year)")
     }
 }
 
