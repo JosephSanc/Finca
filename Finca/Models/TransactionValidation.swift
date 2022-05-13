@@ -26,9 +26,6 @@ struct TransactionValidation {
         case .date:
             let result = textIsEmpty ? (false, "Please select a date") : (true, nil)
             return result
-        case .all:
-            let result = textIsEmpty || floatParseResult == -1.0 ? (false, "Please check that all fields are filled") : (true, nil)
-            return result
         }
     }
 }
@@ -38,5 +35,4 @@ enum textInputs {
     case company
     case category
     case date
-    case all
 }

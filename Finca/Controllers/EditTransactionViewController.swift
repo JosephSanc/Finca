@@ -84,8 +84,6 @@ class EditTransactionViewController: UIViewController {
             (validation, message) = TransactionValidation.validateField(textInput.text!, .category)
         case .date:
             (validation, message) = TransactionValidation.validateField(textInput.text!, .date)
-        case .all:
-            (validation, message) = TransactionValidation.validateField(textInput.text!, .all)
         }
         
         if !validation {
@@ -98,6 +96,19 @@ class EditTransactionViewController: UIViewController {
             dialogMessage.addAction(ok)
 
             self.present(dialogMessage, animated: true, completion: nil)
+        }
+    }
+    
+    func validateAllFieldsFilled() -> Bool {
+        inputValidation(textInput: amount, inputEnum: .amount)
+        inputValidation(textInput: company, inputEnum: .company)
+        inputValidation(textInput: category, inputEnum: .category)
+        inputValidation(textInput: date, inputEnum: .date)
+        
+        if self.presentedViewController as? UIAlertController != nil {
+            return false
+        } else {
+            return true
         }
     }
     
@@ -118,6 +129,11 @@ class EditTransactionViewController: UIViewController {
     }
     
     @IBAction func submitBtn(_ sender: UIButton){
+        let fieldsFilled = validateAllFieldsFilled()
+        if(!fieldsFilled){
+            print("Fields were not filled")
+            return
+        }
         
         guard let userID = Auth.auth().currentUser?.uid else { return }
 
