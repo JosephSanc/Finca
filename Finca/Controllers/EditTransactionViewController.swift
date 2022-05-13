@@ -84,6 +84,8 @@ class EditTransactionViewController: UIViewController {
             (validation, message) = TransactionValidation.validateField(textInput.text!, .category)
         case .date:
             (validation, message) = TransactionValidation.validateField(textInput.text!, .date)
+        case .all:
+            (validation, message) = TransactionValidation.validateField(textInput.text!, .all)
         }
         
         if !validation {
@@ -116,6 +118,7 @@ class EditTransactionViewController: UIViewController {
     }
     
     @IBAction func submitBtn(_ sender: UIButton){
+        
         guard let userID = Auth.auth().currentUser?.uid else { return }
 
         let transactionID = transaction.transactionID

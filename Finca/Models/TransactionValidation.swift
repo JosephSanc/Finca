@@ -13,19 +13,22 @@ struct TransactionValidation {
         let textIsEmpty = text.isEmpty
         let floatParseResult = Float(text) ?? -1.0
         
-        if textIsEmpty || floatParseResult == -1.0 {
-            switch inputEnum {
-            case .amount:
-                return (false, "Please enter a number amount")
-            case .company:
-                return (false, "Please enter a company name")
-            case .category:
-                return (false, "Please select a category")
-            case .date:
-                return (false, "Please select a date")
-            }
-        } else {
-            return (true, nil)
+        switch inputEnum {
+        case .amount:
+            let result = floatParseResult == -1.0 ? (false, "Please enter a number amount") : (true, nil)
+            return result
+        case .company:
+            let result = textIsEmpty ? (false, "Please enter a company name") : (true, nil)
+            return result
+        case .category:
+            let result = textIsEmpty ? (false, "Please select a catagory") : (true, nil)
+            return result
+        case .date:
+            let result = textIsEmpty ? (false, "Please select a date") : (true, nil)
+            return result
+        case .all:
+            let result = textIsEmpty || floatParseResult == -1.0 ? (false, "Please check that all fields are filled") : (true, nil)
+            return result
         }
     }
 }
@@ -35,4 +38,5 @@ enum textInputs {
     case company
     case category
     case date
+    case all
 }

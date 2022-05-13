@@ -57,9 +57,13 @@ class AddTransactionViewController: UIViewController {
             (validation, message) = TransactionValidation.validateField(textInput.text!, .category)
         case .date:
             (validation, message) = TransactionValidation.validateField(textInput.text!, .date)
+        case .all:
+            (validation, message) = TransactionValidation.validateField(textInput.text!, .all)
         }
         
         if !validation {
+            print("hello")
+            
             let dialogMessage = UIAlertController(title: "Error", message: message!, preferredStyle: .alert)
 
             let ok = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
@@ -106,30 +110,6 @@ class AddTransactionViewController: UIViewController {
         dateTxtField.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
-
-    @IBAction func addTransaction(_ sender: Any) {
-
-        let dateHelper = DateFormatChanger(dateStr: dateTxtField.text!)
-
-        let day = dateHelper.getDay()
-        let month = dateHelper.getMonth()
-        let year = dateHelper.getYear()
-
-        guard let amount = Float(amountInput.text!) else { return }
-        guard let company = companyInput.text?.lowercased() else { return }
-        guard let category = categoryTxtField.text?.lowercased() else { return }
-
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-
-        let transactionID = UUID().uuidString
-
-        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(transactionID)")
-
-        let dataToSave: [String: Any] = ["transactionID": transactionID, "amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
-        docRef.setData(dataToSave)
-        
-        navigationController?.popViewController(animated: true)
-    }
     
     @IBAction func amountEndEditing(_ sender: UITextField) {
         inputValidation(textInput: amountInput, inputEnum: .amount)
@@ -146,6 +126,42 @@ class AddTransactionViewController: UIViewController {
     @IBAction func dateEndEditing(_ sender: UITextField) {
         inputValidation(textInput: dateTxtField, inputEnum: .date)
     }
+    
+    func validateAllFieldsFilled(){
+        inputValidation(textInput: amountInput, inputEnum: .all)
+        inputValidation(textInput: companyInput, inputEnum: .all)
+        inputValidation(textInput: categoryTxtField, inputEnum: .all)
+        inputValidation(textInput: dateTxtField, inputEnum: .all)
+        
+        if self.presentedViewController as? UIAlertController != nil {
+            print("presented")
+        }
+    }
+    
+    @IBAction func addTransaction(_ sender: Any) {
+        validateAllFieldsFilled()
+//        let dateHelper = DateFormatChanger(dateStr: dateTxtField.text!)
+//
+//        let day = dateHelper.getDay()
+//        let month = dateHelper.getMonth()
+//        let year = dateHelper.getYear()
+//
+//        guard let amount = Float(amountInput.text!) else { return }
+//        guard let company = companyInput.text?.lowercased() else { return }
+//        guard let category = categoryTxtField.text?.lowercased() else { return }
+//
+//        guard let userID = Auth.auth().currentUser?.uid else { return }
+//
+//        let transactionID = UUID().uuidString
+//
+//        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(transactionID)")
+//
+//        let dataToSave: [String: Any] = ["transactionID": transactionID, "amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
+//        docRef.setData(dataToSave)
+//
+//        navigationController?.popViewController(animated: true)
+    }
+
 }
 
 extension AddTransactionViewController: UIPickerViewDelegate, UIPickerViewDataSource{
