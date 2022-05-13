@@ -47,7 +47,7 @@ class EditTransactionViewController: UIViewController {
         createDatePicker()
     }
     
-    @IBAction func sayHello(_ sender: UIButton){
+    @IBAction func submitBtn(_ sender: UIButton){
         guard let userID = Auth.auth().currentUser?.uid else { return }
 
         let transactionID = transaction.transactionID
@@ -64,6 +64,8 @@ class EditTransactionViewController: UIViewController {
         
         let dataToSave: [String: Any] = ["transactionID": transaction.transactionID, "amount": transaction.amount, "company": transaction.company, "category": transaction.category, "day": transaction.day, "month": transaction.month, "year": transaction.year]
         docRef.setData(dataToSave)
+        
+        navigationController?.popViewController(animated: true)
     }
     
     func createDatePicker(){

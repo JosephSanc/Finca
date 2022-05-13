@@ -343,15 +343,15 @@
             <objects>
                 <viewController id="MLO-aj-sKC" customClass="TransactionsViewController" customModule="Finca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kSQ-D3-gXk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-Eq-Nsx">
-                                <rect key="frame" x="0.0" y="94" width="414" height="648"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="658"/>
                                 <color key="backgroundColor" name="BrandWhite"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlG-T7-DPe">
-                                <rect key="frame" x="334" y="750" width="60" height="40"/>
+                                <rect key="frame" x="334" y="804" width="60" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="MwX-1E-T62"/>
                                     <constraint firstAttribute="height" constant="40" id="cd8-n4-kCs"/>
@@ -359,11 +359,11 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="XbR-pA-qmJ"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="TransactionsToAddTransactions" id="XbR-pA-qmJ"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BYv-yb-l3E">
-                                <rect key="frame" x="42" y="52" width="330" height="34"/>
+                                <rect key="frame" x="42" y="96" width="330" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o9m-0Z-stQ">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
@@ -428,11 +428,11 @@
             <objects>
                 <viewController id="y3I-6O-iJM" customClass="EditTransactionViewController" customModule="Finca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o41-yT-lbM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aA2-uf-QQw">
-                                <rect key="frame" x="37" y="108" width="340" height="275"/>
+                                <rect key="frame" x="37" y="128" width="340" height="275"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="CMH-Vl-BQK" userLabel="Transaction Labels">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="275"/>
@@ -521,13 +521,11 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0F-tt-76L">
-                                <rect key="frame" x="172" y="413" width="70" height="31"/>
+                                <rect key="frame" x="172" y="433" width="70" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Submit"/>
                                 <connections>
-                                    <action selector="addTransaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RRO-q4-NIe"/>
-                                    <action selector="sayHello:" destination="y3I-6O-iJM" eventType="touchUpInside" id="zqJ-vp-myX"/>
-                                    <segue destination="MLO-aj-sKC" kind="show" identifier="SubmitToTransactions" id="6um-3s-g1c"/>
+                                    <action selector="submitBtn:" destination="y3I-6O-iJM" eventType="touchUpInside" id="xOZ-6E-zLs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -557,11 +555,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AddTransactionViewController" customModule="Finca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GhC-Kd-IFW">
-                                <rect key="frame" x="0.0" y="74" width="414" height="275"/>
+                                <rect key="frame" x="0.0" y="118" width="414" height="275"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="NDo-md-MRA" userLabel="Transaction Labels">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="275"/>
@@ -650,12 +648,11 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMj-h8-FPe">
-                                <rect key="frame" x="142.5" y="374" width="129" height="31"/>
+                                <rect key="frame" x="142.5" y="418" width="129" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Transaction"/>
                                 <connections>
                                     <action selector="addTransaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uFW-29-UyI"/>
-                                    <segue destination="MLO-aj-sKC" kind="show" identifier="AddTransactionToTransactions" id="f8f-qt-Wb8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -707,7 +704,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f8f-qt-Wb8"/>
         <segue reference="KAk-jQ-4tY"/>
     </inferredMetricsTieBreakers>
     <resources>

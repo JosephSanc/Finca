@@ -100,7 +100,8 @@ class AddTransactionViewController: UIViewController {
 
         let dataToSave: [String: Any] = ["transactionID": transactionID, "amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
         docRef.setData(dataToSave)
-        print("TranctionID: \(transactionID), Amount: \(amount), Company: \(company), Category: \(category), Month: \(month), Day: \(day), Year: \(year)")
+        
+        navigationController?.popViewController(animated: true)
     }
 }
 
