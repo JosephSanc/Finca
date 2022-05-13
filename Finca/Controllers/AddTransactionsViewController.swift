@@ -45,6 +45,33 @@ class AddTransactionViewController: UIViewController {
         
     }
     
+    func inputValidation(textInput: UITextField, inputEnum: textInputs){
+        var (validation, message): (Bool, String?) = (false, "")
+        
+        switch inputEnum {
+        case .amount:
+            (validation, message) = TransactionValidation.validateField(textInput.text!, .amount)
+        case .company:
+            (validation, message) = TransactionValidation.validateField(textInput.text!, .company)
+        case .category:
+            (validation, message) = TransactionValidation.validateField(textInput.text!, .category)
+        case .date:
+            (validation, message) = TransactionValidation.validateField(textInput.text!, .date)
+        }
+        
+        if !validation {
+            let dialogMessage = UIAlertController(title: "Error", message: message!, preferredStyle: .alert)
+
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+                print("Ok button tapped")
+            }
+
+            dialogMessage.addAction(ok)
+
+            self.present(dialogMessage, animated: true, completion: nil)
+        }
+    }
+
     func getCurrentUser() -> Substring {
         let user = Auth.auth().currentUser
         if let user = user {
@@ -102,6 +129,22 @@ class AddTransactionViewController: UIViewController {
         docRef.setData(dataToSave)
         
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func amountEndEditing(_ sender: UITextField) {
+        inputValidation(textInput: amountInput, inputEnum: .amount)
+    }
+    
+    @IBAction func companyEndEditing(_ sender: UITextField) {
+        inputValidation(textInput: companyInput, inputEnum: .company)
+    }
+    
+    @IBAction func categoryEndEditing(_ sender: UITextField) {
+        inputValidation(textInput: categoryTxtField, inputEnum: .category)
+    }
+    
+    @IBAction func dateEndEditing(_ sender: UITextField) {
+        inputValidation(textInput: dateTxtField, inputEnum: .date)
     }
 }
 

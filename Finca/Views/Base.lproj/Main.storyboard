@@ -488,6 +488,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="amountEndEditing:" destination="y3I-6O-iJM" eventType="editingDidEnd" id="h0v-P0-Q8A"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="06k-kA-Q0X">
                                                 <rect key="frame" x="0.0" y="78" width="170" height="41"/>
@@ -496,6 +499,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="companyEndEditing:" destination="y3I-6O-iJM" eventType="editingDidEnd" id="OUE-P4-eWX"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y71-0V-5SG">
                                                 <rect key="frame" x="0.0" y="156" width="170" height="41"/>
@@ -504,6 +510,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="categoryEndEditing:" destination="y3I-6O-iJM" eventType="editingDidEnd" id="9Ji-19-xyl"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LG6-Du-YE1">
                                                 <rect key="frame" x="0.0" y="234" width="170" height="41"/>
@@ -512,6 +521,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="dateEndEditing:" destination="y3I-6O-iJM" eventType="editingDidEnd" id="epN-oH-j96"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -615,6 +627,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="amountEndEditing:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="4ej-Ng-TUh"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NUQ-Ib-VCW">
                                                 <rect key="frame" x="18.5" y="78" width="170" height="41"/>
@@ -623,6 +638,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="companyEndEditing:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="SFE-9I-7oP"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4vK-Kp-Qrd">
                                                 <rect key="frame" x="18.5" y="156" width="170" height="41"/>
@@ -631,6 +649,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="categoryEndEditing:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="8HL-Kd-IFO"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xNl-VA-zAp">
                                                 <rect key="frame" x="18.5" y="234" width="170" height="41"/>
@@ -639,6 +660,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="dateEndEditing:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="p2N-fp-TVM"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
