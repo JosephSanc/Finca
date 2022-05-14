@@ -21,6 +21,7 @@ class EditTransactionViewController: UIViewController {
     var docRef: DocumentReference!
     private var db = Firestore.firestore()
     
+    var dialogMessage = UIAlertController()
     let datePicker = UIDatePicker()
     let categoryPicker = UIPickerView()
     
@@ -45,6 +46,10 @@ class EditTransactionViewController: UIViewController {
         category.textAlignment = .center
         
         createDatePicker()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.dismiss(animated: true)
     }
     
     func createDatePicker(){
@@ -87,7 +92,7 @@ class EditTransactionViewController: UIViewController {
         }
         
         if !validation {
-            let dialogMessage = UIAlertController(title: "Error", message: message!, preferredStyle: .alert)
+            dialogMessage = UIAlertController(title: "Error", message: message!, preferredStyle: .alert)
 
             let ok = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
                 print("Ok button tapped")

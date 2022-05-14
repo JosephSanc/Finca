@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SwiftUI
 
 class AddTransactionViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class AddTransactionViewController: UIViewController {
     @IBOutlet weak var companyInput: UITextField!
     @IBOutlet weak var categoryTxtField: UITextField!
     @IBOutlet weak var dateTxtField: UITextField!
+    @IBOutlet weak var cameraView: UIView!
     
     var docRef: DocumentReference!
     
@@ -42,7 +44,11 @@ class AddTransactionViewController: UIViewController {
         categoryTxtField.textAlignment = .center
         
         createDatePicker()
-        
+        createCameraButton()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.dismiss(animated: true)
     }
     
     func inputValidation(textInput: UITextField, inputEnum: textInputs){
@@ -93,6 +99,19 @@ class AddTransactionViewController: UIViewController {
         } else {
             return "Error getting current user"
         }
+    }
+    
+    func createCameraButton(){
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        var cameraImage = UIImage(systemName: "camera")
+        
+        let brandGreen = UIColor(named: "BrandGreen")
+        var config = UIImage.SymbolConfiguration(paletteColors: [brandGreen!])
+        config = config.applying(UIImage.SymbolConfiguration(font: .systemFont(ofSize: 50.0)))
+        
+        cameraImage = cameraImage?.withConfiguration(config)
+        button.setImage(cameraImage, for: .normal)
+        cameraView.addSubview(button)
     }
     
     func createDatePicker(){

@@ -671,23 +671,47 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMj-h8-FPe">
-                                <rect key="frame" x="142.5" y="418" width="129" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Add Transaction"/>
-                                <connections>
-                                    <action selector="addTransaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uFW-29-UyI"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l69-nt-xvG">
+                                <rect key="frame" x="74" y="418" width="266" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gy-Fp-iYu">
+                                        <rect key="frame" x="0.0" y="0.0" width="129" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="qtZ-EE-jEb"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Recept"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMj-h8-FPe">
+                                        <rect key="frame" x="137" y="0.0" width="129" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Add Transaction"/>
+                                        <connections>
+                                            <action selector="addTransaction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uFW-29-UyI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13U-d6-C2r">
+                                <rect key="frame" x="167" y="782" width="80" height="80"/>
+                                <color key="backgroundColor" name="BrandWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="EXr-l1-b6h"/>
+                                    <constraint firstAttribute="width" constant="80" id="taM-zK-S5E"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BrandWhite"/>
                         <constraints>
                             <constraint firstItem="GhC-Kd-IFW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="8Hg-0W-KFi"/>
-                            <constraint firstItem="MMj-h8-FPe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DvT-ze-NRp"/>
                             <constraint firstAttribute="trailing" secondItem="GhC-Kd-IFW" secondAttribute="trailing" id="ViI-XK-N1o"/>
-                            <constraint firstItem="MMj-h8-FPe" firstAttribute="top" secondItem="GhC-Kd-IFW" secondAttribute="bottom" constant="25" id="bGw-KD-Jfd"/>
+                            <constraint firstItem="l69-nt-xvG" firstAttribute="top" secondItem="GhC-Kd-IFW" secondAttribute="bottom" constant="25" id="aPY-0P-yDL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="l69-nt-xvG" secondAttribute="bottom" constant="413" id="gjE-XH-iGE"/>
                             <constraint firstItem="GhC-Kd-IFW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="j9o-2T-GR2"/>
+                            <constraint firstItem="13U-d6-C2r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lo6-8e-XSo"/>
+                            <constraint firstItem="13U-d6-C2r" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="n7a-6u-dc7"/>
+                            <constraint firstItem="l69-nt-xvG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pPv-3k-oSk"/>
                             <constraint firstItem="GhC-Kd-IFW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rtr-0m-h3O"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GhC-Kd-IFW" secondAttribute="trailing" id="sgu-dl-HRH"/>
                         </constraints>
@@ -696,6 +720,7 @@
                     <connections>
                         <outlet property="amountInput" destination="LFF-j1-W3P" id="1Em-RC-yGC"/>
                         <outlet property="amountLabel" destination="bqO-Wm-hzK" id="liX-s0-Lih"/>
+                        <outlet property="cameraView" destination="13U-d6-C2r" id="3wi-0U-E6r"/>
                         <outlet property="categoryLabel" destination="HNI-MN-yg6" id="Ytn-y9-hpu"/>
                         <outlet property="categoryTxtField" destination="4vK-Kp-Qrd" id="3OO-LB-SHT"/>
                         <outlet property="companyInput" destination="NUQ-Ib-VCW" id="OaZ-iA-S3U"/>
