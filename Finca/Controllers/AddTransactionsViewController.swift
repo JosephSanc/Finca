@@ -20,6 +20,7 @@ class AddTransactionViewController: UIViewController {
     @IBOutlet weak var categoryTxtField: UITextField!
     @IBOutlet weak var dateTxtField: UITextField!
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var receipt: UIImageView!
     
     var docRef: DocumentReference!
     
@@ -45,10 +46,6 @@ class AddTransactionViewController: UIViewController {
         
         createDatePicker()
         createCameraButton()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.dismiss(animated: true)
     }
     
     func inputValidation(textInput: UITextField, inputEnum: textInputs){
@@ -112,6 +109,14 @@ class AddTransactionViewController: UIViewController {
         cameraImage = cameraImage?.withConfiguration(config)
         button.setImage(cameraImage, for: .normal)
         cameraView.addSubview(button)
+        button.addTarget(self, action: #selector(self.cameraButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func cameraButtonPressed(){
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
     func createDatePicker(){
@@ -129,7 +134,7 @@ class AddTransactionViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
     }
-
+    
     @objc func dateDonePressed(){
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -154,8 +159,6 @@ class AddTransactionViewController: UIViewController {
     @IBAction func dateEndEditing(_ sender: UITextField) {
         inputValidation(textInput: dateTxtField, inputEnum: .date)
     }
-    
-
     
     @IBAction func addTransaction(_ sender: Any) {
         let fieldsFilled = validateAllFieldsFilled()
@@ -186,6 +189,24 @@ class AddTransactionViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
+}
+
+extension AddTransactionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[UIImagePickerController.InfoKey.original] as? UIImage else {
+            return
+        }
+
+        receipt.image = image
+    }
 }
 
 extension AddTransactionViewController: UIPickerViewDelegate, UIPickerViewDataSource{
