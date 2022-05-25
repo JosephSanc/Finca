@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A3C4F72283E4B8C00B92091 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3A3C4F71283E4B8C00B92091 /* FirebaseStorage */; };
 		3A3D73E6280981180018E453 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D73E5280981180018E453 /* UserHelper.swift */; };
 		3A4A789A280E11E400E2037D /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A7898280E11E400E2037D /* TransactionCell.swift */; };
 		3A4A789B280E11E400E2037D /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4A7899280E11E400E2037D /* TransactionCell.xib */; };
@@ -70,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				508C703108D55D7247F6A302 /* Pods_Finca.framework in Frameworks */,
+				3A3C4F72283E4B8C00B92091 /* FirebaseStorage in Frameworks */,
 				3A84D7322800A3A100F3BD1F /* FirebaseAuth in Frameworks */,
 				3A84D7342800A3A100F3BD1F /* FirebaseFirestore in Frameworks */,
 			);
@@ -188,6 +190,7 @@
 			packageProductDependencies = (
 				3A84D7312800A3A100F3BD1F /* FirebaseAuth */,
 				3A84D7332800A3A100F3BD1F /* FirebaseFirestore */,
+				3A3C4F71283E4B8C00B92091 /* FirebaseStorage */,
 			);
 			productName = Finca;
 			productReference = 3A88870D27F1D7E000D7E184 /* Finca.app */;
@@ -219,6 +222,7 @@
 			mainGroup = 3A88870427F1D7E000D7E184;
 			packageReferences = (
 				3A84D7302800A3A100F3BD1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3A3C4F70283E4B8C00B92091 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3A88870E27F1D7E000D7E184 /* Products */;
 			projectDirPath = "";
@@ -531,6 +535,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3A3C4F70283E4B8C00B92091 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		3A84D7302800A3A100F3BD1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -542,6 +554,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3A3C4F71283E4B8C00B92091 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A3C4F70283E4B8C00B92091 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		3A84D7312800A3A100F3BD1F /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3A84D7302800A3A100F3BD1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

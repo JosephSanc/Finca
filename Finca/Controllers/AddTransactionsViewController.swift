@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 import SwiftUI
 
 class AddTransactionViewController: UIViewController {
@@ -25,6 +26,10 @@ class AddTransactionViewController: UIViewController {
     var docRef: DocumentReference!
     
     private var db = Firestore.firestore()
+    private let storage = Storage.storage().reference()
+    
+    private var userId = ""
+    private var transactionId = ""
     
     let datePicker = UIDatePicker()
     let categoryPicker = UIPickerView()
@@ -33,6 +38,9 @@ class AddTransactionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userId = Auth.auth().currentUser!.uid
+        transactionId = UUID().uuidString
         
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
@@ -177,13 +185,9 @@ class AddTransactionViewController: UIViewController {
         guard let company = companyInput.text?.lowercased() else { return }
         guard let category = categoryTxtField.text?.lowercased() else { return }
 
-        guard let userID = Auth.auth().currentUser?.uid else { return }
+        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userId)/\(K.TransactionCollection.collectionName)/\(transactionId)")
 
-        let transactionID = UUID().uuidString
-
-        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(transactionID)")
-
-        let dataToSave: [String: Any] = ["transactionID": transactionID, "amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
+        let dataToSave: [String: Any] = ["transactionID": transactionId, "amount": amount, "company": company, "category": category, "day": day, "month": month, "year": year]
         docRef.setData(dataToSave)
 
         navigationController?.popViewController(animated: true)
@@ -201,8 +205,25 @@ extension AddTransactionViewController: UIImagePickerControllerDelegate, UINavig
 
         picker.dismiss(animated: true, completion: nil)
         
-        guard let image = info[UIImagePickerController.InfoKey.original] as? UIImage else {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
+        }
+        
+        guard let imageData = image.pngData() else {
+            return
+        }
+        
+        storage.child("images/\(userId)/\(transactionId).png").putData(imageData, metadata: nil) { _, error in
+            guard error == nil else {
+                print("Failed to upload")
+                return
+            }
+            self.storage.child("images/\(self.userId)/\(self.transactionId).png").downloadURL { _, error in
+                guard error != nil else {
+                    print("Issue adding image to storage: \(error)")
+                    return
+                }
+            }
         }
 
         receipt.image = image
