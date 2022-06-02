@@ -21,7 +21,7 @@ class AddTransactionViewController: UIViewController {
     @IBOutlet weak var categoryTxtField: UITextField!
     @IBOutlet weak var dateTxtField: UITextField!
     @IBOutlet weak var cameraView: UIView!
-    @IBOutlet weak var receipt: UIImageView!
+    @IBOutlet weak var receiptImageView: UIImageView!
     
     var docRef: DocumentReference!
     
@@ -218,15 +218,9 @@ extension AddTransactionViewController: UIImagePickerControllerDelegate, UINavig
                 print("Failed to upload")
                 return
             }
-            self.storage.child("images/\(self.userId)/\(self.transactionId).png").downloadURL { _, error in
-                guard error != nil else {
-                    print("Issue adding image to storage: \(error)")
-                    return
-                }
-            }
         }
 
-        receipt.image = image
+        receiptImageView.image = image
     }
 }
 

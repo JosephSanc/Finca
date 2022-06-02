@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class EditTransactionViewController: UIViewController {
     
@@ -15,11 +16,17 @@ class EditTransactionViewController: UIViewController {
     @IBOutlet weak var company: UITextField!
     @IBOutlet weak var category: UITextField!
     @IBOutlet weak var date: UITextField!
+    @IBOutlet weak var receiptImageView: UIImageView!
+    @IBOutlet weak var cameraView: UIView!
     
     var transaction: Transaction = Transaction(transactionID: "", month: 0, day: 0, year: 0, amount: 0.0, company: "", category: "")
 
     var docRef: DocumentReference!
-    private var db = Firestore.firestore()
+    var db = Firestore.firestore()
+    var storageRef = Storage.storage().reference()
+    
+    var userID = Auth.auth().currentUser!.uid
+    var transactionID = ""
     
     var dialogMessage = UIAlertController()
     let datePicker = UIDatePicker()
@@ -35,6 +42,8 @@ class EditTransactionViewController: UIViewController {
         category.text = transaction.category
         date.text = "\(DateHelper().getMonthStr(transaction.month)), \(transaction.day), \(transaction.year)"
         
+        transactionID = transaction.transactionID
+        
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
         
@@ -46,11 +55,10 @@ class EditTransactionViewController: UIViewController {
         category.textAlignment = .center
         
         createDatePicker()
+        createCameraButton()
+        getReceiptImage()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.dismiss(animated: true)
-    }
+
     
     func createDatePicker(){
         date.textAlignment = .center
@@ -72,7 +80,6 @@ class EditTransactionViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-
         date.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
@@ -117,6 +124,78 @@ class EditTransactionViewController: UIViewController {
         }
     }
     
+    @objc func cameraButtonPressed(){
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    func createCameraButton(){
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        var cameraImage = UIImage(systemName: "camera")
+        
+        let brandGreen = UIColor(named: "BrandGreen")
+        var config = UIImage.SymbolConfiguration(paletteColors: [brandGreen!])
+        config = config.applying(UIImage.SymbolConfiguration(font: .systemFont(ofSize: 50.0)))
+        
+        cameraImage = cameraImage?.withConfiguration(config)
+        button.setImage(cameraImage, for: .normal)
+        cameraView.addSubview(button)
+        button.addTarget(self, action: #selector(self.cameraButtonPressed), for: .touchUpInside)
+    }
+    
+    func getReceiptImage(){
+        let imageRef = storageRef.child("images/\(userID)/\(transactionID).png")
+        
+        imageRef.getData(maxSize: 1 * 4200 * 4200, completion: { data, error in
+            if let err = error {
+                print("Error getting receipt: \(err)")
+            } else {
+                let image = UIImage(data: data!)
+                self.receiptImageView.transform = self.receiptImageView.transform.rotated(by: .pi / 2)
+                self.receiptImageView.image = image
+            }
+        })
+    }
+    
+    func updateTransactionData(){
+        let fieldsFilled = validateAllFieldsFilled()
+        if(!fieldsFilled){
+            print("Fields were not filled")
+            return
+        }
+
+        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(transactionID)")
+        
+        let dateFormatChange = DateFormatChanger(dateStr: date.text!)
+        transaction.amount = Float(amount.text!)!
+        transaction.company = company.text!
+        transaction.category = category.text!
+        transaction.day = dateFormatChange.getDay()
+        transaction.month = dateFormatChange.getMonth()
+        transaction.year = dateFormatChange.getYear()
+        
+        let dataToSave: [String: Any] = ["transactionID": transaction.transactionID, "amount": transaction.amount, "company": transaction.company, "category": transaction.category, "day": transaction.day, "month": transaction.month, "year": transaction.year]
+        docRef.setData(dataToSave)
+        
+    }
+    
+    func updateReceiptImage(){
+        let imageData = receiptImageView.image?.pngData()
+        
+        if let imgData = imageData {
+            storageRef.child("images/\(userID)/\(transactionID).png").putData(imgData, metadata: nil) { _, error in
+                guard error == nil else {
+                    print("Failed to upload")
+                    return
+                }
+            }
+        } else {
+            print("We have a problemo")
+        }
+    }
+    
     @IBAction func amountEndEditing(_ sender: UITextField) {
         inputValidation(textInput: amount, inputEnum: .amount)
     }
@@ -134,30 +213,27 @@ class EditTransactionViewController: UIViewController {
     }
     
     @IBAction func submitBtn(_ sender: UIButton){
-        let fieldsFilled = validateAllFieldsFilled()
-        if(!fieldsFilled){
-            print("Fields were not filled")
+        updateTransactionData()
+        updateReceiptImage()
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+extension EditTransactionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
-        
-        guard let userID = Auth.auth().currentUser?.uid else { return }
 
-        let transactionID = transaction.transactionID
-
-        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userID)/\(K.TransactionCollection.collectionName)/\(transactionID)")
-        
-        let dateFormatChange = DateFormatChanger(dateStr: date.text!)
-        transaction.amount = Float(amount.text!)!
-        transaction.company = company.text!
-        transaction.category = category.text!
-        transaction.day = dateFormatChange.getDay()
-        transaction.month = dateFormatChange.getMonth()
-        transaction.year = dateFormatChange.getYear()
-        
-        let dataToSave: [String: Any] = ["transactionID": transaction.transactionID, "amount": transaction.amount, "company": transaction.company, "category": transaction.category, "day": transaction.day, "month": transaction.month, "year": transaction.year]
-        docRef.setData(dataToSave)
-        
-        navigationController?.popViewController(animated: true)
+        receiptImageView.image = image
     }
 }
 
