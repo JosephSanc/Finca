@@ -57,8 +57,20 @@ class EditTransactionViewController: UIViewController {
         createDatePicker()
         createCameraButton()
         getReceiptImage()
+        addGestureToReceiptImage()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.showReceiptImage {
+            let showReceiptVC = segue.destination as! ShowReceiptViewController
+
+            if let receiptImage = receiptImageView.image {
+                showReceiptVC.receiptImage = receiptImage
+            } else {
+                print("Error showing bigger image of receipt")
+            }
+        }
+    }
     
     func createDatePicker(){
         date.textAlignment = .center
@@ -75,13 +87,23 @@ class EditTransactionViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
     }
-
+    
     @objc func dateDonePressed(){
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         date.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
+    }
+    
+    func addGestureToReceiptImage(){
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        receiptImageView.isUserInteractionEnabled = true
+        receiptImageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(){
+        performSegue(withIdentifier: K.showReceiptImage, sender: self)
     }
     
     func inputValidation(textInput: UITextField, inputEnum: textInputs){

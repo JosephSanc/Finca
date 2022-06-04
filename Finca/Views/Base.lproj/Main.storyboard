@@ -577,11 +577,42 @@
                         <outlet property="company" destination="06k-kA-Q0X" id="emA-MQ-c0h"/>
                         <outlet property="date" destination="LG6-Du-YE1" id="wpF-Wy-xqk"/>
                         <outlet property="receiptImageView" destination="VPS-c3-vPr" id="XcQ-g5-zNA"/>
+                        <segue destination="g90-40-jNb" kind="show" identifier="ShowReceiptFromEdit" id="D6k-39-8zo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vy0-k1-NeM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6239" y="-222"/>
+        </scene>
+        <!--Show Receipt View Controller-->
+        <scene sceneID="TAN-wf-DF7">
+            <objects>
+                <viewController id="g90-40-jNb" customClass="ShowReceiptViewController" customModule="Finca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Gg-wf-97P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A1M-Pl-9T8">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uPs-ct-wAf"/>
+                        <color key="backgroundColor" name="BrandWhite"/>
+                        <constraints>
+                            <constraint firstItem="A1M-Pl-9T8" firstAttribute="leading" secondItem="uPs-ct-wAf" secondAttribute="leading" id="09p-PF-rjg"/>
+                            <constraint firstItem="A1M-Pl-9T8" firstAttribute="top" secondItem="uPs-ct-wAf" secondAttribute="top" id="l6d-WO-gtR"/>
+                            <constraint firstItem="uPs-ct-wAf" firstAttribute="bottom" secondItem="A1M-Pl-9T8" secondAttribute="bottom" id="qUn-d6-Prf"/>
+                            <constraint firstItem="uPs-ct-wAf" firstAttribute="trailing" secondItem="A1M-Pl-9T8" secondAttribute="trailing" id="rNl-IC-JgZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3ib-v8-6jC"/>
+                    <connections>
+                        <outlet property="receiptImageView" destination="A1M-Pl-9T8" id="8pI-GZ-vED"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TtW-Ug-vsd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7148" y="-222"/>
         </scene>
         <!--Add Transaction-->
         <scene sceneID="tne-QT-ifu">

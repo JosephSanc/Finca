@@ -11,6 +11,7 @@ struct K {
     static let registerToLanding = "RegisterToLanding"
     static let loginToLanding = "LoginToLanding"
     static let transactionNibName = "TransactionCell"
+    static let showReceiptImage = "ShowReceiptFromEdit"
     
     struct UserCollection {
         static let collectionName = "users"
