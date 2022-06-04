@@ -421,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q1d-tV-Qp6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5292.753623188406" y="-222.32142857142856"/>
+            <point key="canvasLocation" x="5390" y="-762"/>
         </scene>
         <!--Edit Transaction View Controller-->
         <scene sceneID="9a2-Dh-op4">
@@ -582,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vy0-k1-NeM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6239" y="-222"/>
+            <point key="canvasLocation" x="6374" y="-1103"/>
         </scene>
         <!--Show Receipt View Controller-->
         <scene sceneID="TAN-wf-DF7">
@@ -612,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtW-Ug-vsd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7148" y="-222"/>
+            <point key="canvasLocation" x="7500" y="-762"/>
         </scene>
         <!--Add Transaction-->
         <scene sceneID="tne-QT-ifu">
@@ -780,7 +780,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6237.68115942029" y="517.63392857142856"/>
+            <point key="canvasLocation" x="6374" y="-450"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y9i-hE-7Mz">

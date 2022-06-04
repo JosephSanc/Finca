@@ -40,7 +40,7 @@
 		05575D94FA74F82FC8BE88E7 /* Pods-Finca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.release.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.release.xcconfig"; sourceTree = "<group>"; };
 		3A2A34FA284BBF9D0010363B /* ShowReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowReceiptViewController.swift; sourceTree = "<group>"; };
 		3A3D73E5280981180018E453 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
-		3A4A7898280E11E400E2037D /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionCell.swift; path = ../TransactionCell.swift; sourceTree = "<group>"; };
+		3A4A7898280E11E400E2037D /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		3A4A7899280E11E400E2037D /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TransactionCell.xib; path = ../TransactionCell.xib; sourceTree = "<group>"; };
 		3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		3A7082E527FF8B8E00990D0E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +82,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A2A34FC284BEFD60010363B /* TransactionViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A4A7898280E11E400E2037D /* TransactionCell.swift */,
+				3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */,
+				3A88871427F1D7E000D7E184 /* AddTransactionsViewController.swift */,
+				3A7082E927FF8C1C00990D0E /* RegisterViewController.swift */,
+				3A84D73D28020CCB00F3BD1F /* TransactionsViewController.swift */,
+				3AB01CE7282BF96600EED521 /* EditTransactionViewController.swift */,
+				3A2A34FA284BBF9D0010363B /* ShowReceiptViewController.swift */,
+			);
+			path = TransactionViewControllers;
+			sourceTree = "<group>";
+		};
 		3A88870427F1D7E000D7E184 = {
 			isa = PBXGroup;
 			children = (
@@ -120,16 +134,10 @@
 		3A88872427F1D7F700D7E184 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3A4A7898280E11E400E2037D /* TransactionCell.swift */,
-				3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */,
-				3A88871427F1D7E000D7E184 /* AddTransactionsViewController.swift */,
+				3A2A34FC284BEFD60010363B /* TransactionViewControllers */,
 				3A7082E527FF8B8E00990D0E /* HomeViewController.swift */,
 				3A7082E727FF8BFE00990D0E /* LoginViewController.swift */,
-				3A7082E927FF8C1C00990D0E /* RegisterViewController.swift */,
 				3A7082EB27FF8C3100990D0E /* LandingViewController.swift */,
-				3A84D73D28020CCB00F3BD1F /* TransactionsViewController.swift */,
-				3AB01CE7282BF96600EED521 /* EditTransactionViewController.swift */,
-				3A2A34FA284BBF9D0010363B /* ShowReceiptViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
