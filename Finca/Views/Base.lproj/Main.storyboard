@@ -306,7 +306,10 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Receipts"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Accounts"/>
+                                        <connections>
+                                            <segue destination="RgS-cK-BD7" kind="show" id="9T4-NN-zY7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGs-oG-8wp">
                                         <rect key="frame" x="0.0" y="220" width="150" height="50"/>
@@ -337,6 +340,237 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ae9-xD-5oG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4394" y="-222"/>
+        </scene>
+        <!--Accounts-->
+        <scene sceneID="joG-Il-JJb">
+            <objects>
+                <viewController id="RgS-cK-BD7" customClass="AccountsViewController" customModule="Finca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DHv-yE-DbZ" customClass="AccountsView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28.300000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="u1n-wY-rIs">
+                                <rect key="frame" x="20" y="121" width="197" height="496.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency Fund" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jT8-PS-gMR">
+                                        <rect key="frame" x="25.5" y="0.0" width="146.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Down Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CD-G8-X6g">
+                                        <rect key="frame" x="32.5" y="52.5" width="132" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MacStudioFund" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0J3-zh-qpd">
+                                        <rect key="frame" x="30.5" y="105" width="136.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wells Fargo Checkings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2a2-WL-I0H">
+                                        <rect key="frame" x="0.0" y="157.5" width="197" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ally Checkings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikm-hQ-iDu">
+                                        <rect key="frame" x="35.5" y="210" width="126" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roth IRA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Q7-BL-oTN">
+                                        <rect key="frame" x="60" y="262.5" width="77.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Individual Brokerage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYI-n5-pPH">
+                                        <rect key="frame" x="11.5" y="315" width="174.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cypto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UON-5V-v26">
+                                        <rect key="frame" x="72.5" y="367.5" width="52" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="401k" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meM-xv-gqc">
+                                        <rect key="frame" x="77" y="420" width="43.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Loans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUy-3v-NMM">
+                                        <rect key="frame" x="35.5" y="472.5" width="126" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="cSr-oF-469">
+                                <rect key="frame" x="254" y="120" width="140" height="498"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DrJ-jD-HVJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="OWP-re-vFi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="emergencyFundDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="eQi-kl-d55"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYW-8u-dWS">
+                                        <rect key="frame" x="0.0" y="52" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gN1-Ep-i0I"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="downPaymentDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="1gR-vC-9dx"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zjK-vy-lkZ">
+                                        <rect key="frame" x="0.0" y="104" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="KdK-3j-qss"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="macStudioFundDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="YfC-Sm-NeM"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7SW-T3-hh7">
+                                        <rect key="frame" x="0.0" y="156" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="D0l-P3-vF1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="wellsFargoCheckingsDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="qKd-0r-G9Z"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NZg-cu-VBu">
+                                        <rect key="frame" x="0.0" y="208" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="TlI-eM-TyE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="allyCheckingsDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="7Uc-3D-Yvn"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RsU-Gp-O7z">
+                                        <rect key="frame" x="0.0" y="260" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="eBc-7p-eUf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="rothIRADidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="r1w-GO-Id4"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4uf-4P-5nh">
+                                        <rect key="frame" x="0.0" y="312" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="c7V-Py-gzh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="individualBrokerageDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="W5t-5V-MNF"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AFA-6b-Jin">
+                                        <rect key="frame" x="0.0" y="364" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="CKv-6I-Cg6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="cryptoDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="gSf-EI-jDw"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wy3-vy-qe7">
+                                        <rect key="frame" x="0.0" y="416" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="eH0-cR-lIQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="fourOneKDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="cku-CR-7uw"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b01-86-2vg">
+                                        <rect key="frame" x="0.0" y="468" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="duL-vq-Vis"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="studentLoansDidEndEditing:" destination="RgS-cK-BD7" eventType="editingDidEnd" id="KEb-7p-fJr"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="4dN-Lh-ODy"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5oy-1B-255"/>
+                        <color key="backgroundColor" name="BrandWhite"/>
+                        <constraints>
+                            <constraint firstItem="cSr-oF-469" firstAttribute="top" secondItem="5oy-1B-255" secondAttribute="top" constant="32" id="ApT-yN-VDK"/>
+                            <constraint firstItem="5oy-1B-255" firstAttribute="bottom" secondItem="u1n-wY-rIs" secondAttribute="bottom" constant="244.5" id="EL0-3s-vgd"/>
+                            <constraint firstItem="u1n-wY-rIs" firstAttribute="leading" secondItem="5oy-1B-255" secondAttribute="leading" constant="20" id="M9D-vm-QBd"/>
+                            <constraint firstItem="5oy-1B-255" firstAttribute="trailing" secondItem="cSr-oF-469" secondAttribute="trailing" constant="20" id="OLe-U5-xZi"/>
+                            <constraint firstItem="5oy-1B-255" firstAttribute="bottom" secondItem="cSr-oF-469" secondAttribute="bottom" constant="244" id="eja-Ay-yoX"/>
+                            <constraint firstItem="u1n-wY-rIs" firstAttribute="top" secondItem="5oy-1B-255" secondAttribute="top" constant="33" id="zsc-pV-KdX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Accounts" id="OdW-lB-nK5"/>
+                    <connections>
+                        <outlet property="allyCheckingsLabel" destination="ikm-hQ-iDu" id="1hZ-hL-nPA"/>
+                        <outlet property="allyCheckingsTextField" destination="NZg-cu-VBu" id="7vq-OH-jQN"/>
+                        <outlet property="cryptoLabel" destination="UON-5V-v26" id="gw7-GD-j0u"/>
+                        <outlet property="cryptoTextField" destination="AFA-6b-Jin" id="Ulz-aR-OCd"/>
+                        <outlet property="downPaymentLabel" destination="8CD-G8-X6g" id="RkA-By-zvq"/>
+                        <outlet property="downPaymentTextField" destination="mYW-8u-dWS" id="CO8-88-iLH"/>
+                        <outlet property="emergencyFundLabel" destination="jT8-PS-gMR" id="Wer-c4-SQ8"/>
+                        <outlet property="emergencyFundTextField" destination="DrJ-jD-HVJ" id="ych-O4-zNi"/>
+                        <outlet property="fourOneKLabel" destination="meM-xv-gqc" id="dnZ-qH-A7c"/>
+                        <outlet property="fourOneKTextField" destination="wy3-vy-qe7" id="gC2-ve-ADe"/>
+                        <outlet property="individualBrokerageLabel" destination="fYI-n5-pPH" id="XsH-K2-JdZ"/>
+                        <outlet property="individualBrokerageTextField" destination="4uf-4P-5nh" id="jGi-lp-ZZ5"/>
+                        <outlet property="macStudioFundLabel" destination="0J3-zh-qpd" id="dtj-sB-6m0"/>
+                        <outlet property="macStudioFundTextField" destination="zjK-vy-lkZ" id="nuc-it-1H9"/>
+                        <outlet property="rothIRALabel" destination="7Q7-BL-oTN" id="M7S-Ap-U1B"/>
+                        <outlet property="rothIRATextField" destination="RsU-Gp-O7z" id="k5D-zm-D2X"/>
+                        <outlet property="studentLoansLabel" destination="qUy-3v-NMM" id="OnH-iI-FGd"/>
+                        <outlet property="studentLoansTextField" destination="b01-86-2vg" id="sv9-DG-TXq"/>
+                        <outlet property="wellsFargoCheckingsLabel" destination="2a2-WL-I0H" id="11o-9E-GY8"/>
+                        <outlet property="wellsFargoCheckingsTextField" destination="7SW-T3-hh7" id="wfz-DU-SI9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E3e-z9-YUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5399" y="-222"/>
         </scene>
         <!--Transactions-->
         <scene sceneID="ahd-PR-cbV">
@@ -421,7 +655,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q1d-tV-Qp6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5390" y="-762"/>
+            <point key="canvasLocation" x="5399" y="-854"/>
         </scene>
         <!--Edit Transaction View Controller-->
         <scene sceneID="9a2-Dh-op4">

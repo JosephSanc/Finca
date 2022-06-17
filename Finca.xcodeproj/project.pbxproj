@@ -12,6 +12,7 @@
 		3A3D73E6280981180018E453 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D73E5280981180018E453 /* UserHelper.swift */; };
 		3A4A789A280E11E400E2037D /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A7898280E11E400E2037D /* TransactionCell.swift */; };
 		3A4A789B280E11E400E2037D /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4A7899280E11E400E2037D /* TransactionCell.xib */; };
+		3A5D0351285A760300B1B9DB /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D0350285A760300B1B9DB /* AccountsViewController.swift */; };
 		3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */; };
 		3A7082E627FF8B8E00990D0E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082E527FF8B8E00990D0E /* HomeViewController.swift */; };
 		3A7082E827FF8BFE00990D0E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082E727FF8BFE00990D0E /* LoginViewController.swift */; };
@@ -42,6 +43,7 @@
 		3A3D73E5280981180018E453 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		3A4A7898280E11E400E2037D /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		3A4A7899280E11E400E2037D /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TransactionCell.xib; path = ../TransactionCell.xib; sourceTree = "<group>"; };
+		3A5D0350285A760300B1B9DB /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		3A7082E527FF8B8E00990D0E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3A7082E727FF8BFE00990D0E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 			path = TransactionViewControllers;
 			sourceTree = "<group>";
 		};
+		3A5D034F285A75E900B1B9DB /* AccountsViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A5D0350285A760300B1B9DB /* AccountsViewController.swift */,
+			);
+			path = AccountsViewControllers;
+			sourceTree = "<group>";
+		};
 		3A88870427F1D7E000D7E184 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +144,7 @@
 		3A88872427F1D7F700D7E184 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A5D034F285A75E900B1B9DB /* AccountsViewControllers */,
 				3A2A34FC284BEFD60010363B /* TransactionViewControllers */,
 				3A7082E527FF8B8E00990D0E /* HomeViewController.swift */,
 				3A7082E727FF8BFE00990D0E /* LoginViewController.swift */,
@@ -310,6 +321,7 @@
 				3AB01CE8282BF96600EED521 /* EditTransactionViewController.swift in Sources */,
 				3A4A789A280E11E400E2037D /* TransactionCell.swift in Sources */,
 				3A7082E827FF8BFE00990D0E /* LoginViewController.swift in Sources */,
+				3A5D0351285A760300B1B9DB /* AccountsViewController.swift in Sources */,
 				3A2A34FB284BBF9D0010363B /* ShowReceiptViewController.swift in Sources */,
 				3A88871527F1D7E000D7E184 /* AddTransactionsViewController.swift in Sources */,
 				3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */,
