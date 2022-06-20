@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TransactionValidation {
+struct InputValidation {
 
     static func validateField(_ text: String, _ inputEnum: textInputs) -> (Bool, String?){
         let textIsEmpty = text.isEmpty

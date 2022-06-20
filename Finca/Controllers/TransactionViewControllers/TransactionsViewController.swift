@@ -20,11 +20,9 @@ class TransactionsViewController: UIViewController {
     var transactions: [Transaction] = []
     var transactionIDs: [String] = []
     
-    let months = ["Month", "January", "February", "March", "April",
-                  "May", "June", "July", "August",
-                  "September", "October","November", "December"]
-    var days: [String] = ((1...31).map {String($0)})
-    var years: [String] = ((2020...Calendar.current.component(.year, from: Date())).map {String($0)})
+    let months = K.months
+    var days = K.days
+    var years = K.years
     
     let monthPicker = UIPickerView()
     let dayPicker = UIPickerView()

@@ -12,6 +12,11 @@ struct K {
     static let loginToLanding = "LoginToLanding"
     static let transactionNibName = "TransactionCell"
     static let showReceiptImage = "ShowReceiptFromEdit"
+    static let months = ["Month", "January", "February", "March", "April",
+                         "May", "June", "July", "August",
+                         "September", "October","November", "December"]
+    static let days: [String] = ((1...31).map {String($0)})
+    static let years: [String] = ((2020...Calendar.current.component(.year, from: Date())).map {String($0)})
     
     struct UserCollection {
         static let collectionName = "users"

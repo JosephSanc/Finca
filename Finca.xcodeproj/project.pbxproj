@@ -33,7 +33,7 @@
 		3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A88874B27F8D04500D7E184 /* Transaction.swift */; };
 		3AA2154C280B3AC5006826D3 /* DateFormatChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */; };
 		3AB01CE8282BF96600EED521 /* EditTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB01CE7282BF96600EED521 /* EditTransactionViewController.swift */; };
-		3AB01CEA282E9EAC00EED521 /* TransactionValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB01CE9282E9EAC00EED521 /* TransactionValidation.swift */; };
+		3AB01CEA282E9EAC00EED521 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB01CE9282E9EAC00EED521 /* InputValidation.swift */; };
 		508C703108D55D7247F6A302 /* Pods_Finca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,7 @@
 		3A88874B27F8D04500D7E184 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatChanger.swift; sourceTree = "<group>"; };
 		3AB01CE7282BF96600EED521 /* EditTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionViewController.swift; sourceTree = "<group>"; };
-		3AB01CE9282E9EAC00EED521 /* TransactionValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionValidation.swift; sourceTree = "<group>"; };
+		3AB01CE9282E9EAC00EED521 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
 		5577D8B3ADF18137853B4A21 /* Pods_Finca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Finca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D82E2255FCAD12DC5AF8D2C /* Pods-Finca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Finca.debug.xcconfig"; path = "Target Support Files/Pods-Finca/Pods-Finca.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,7 +169,7 @@
 				3A3D73E5280981180018E453 /* UserHelper.swift */,
 				3AA2154B280B3AC5006826D3 /* DateFormatChanger.swift */,
 				3A876C7A2812D10400215965 /* DateHelper.swift */,
-				3AB01CE9282E9EAC00EED521 /* TransactionValidation.swift */,
+				3AB01CE9282E9EAC00EED521 /* InputValidation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -333,7 +333,7 @@
 				3A84D7362800A40500F3BD1F /* Constants.swift in Sources */,
 				3A88871327F1D7E000D7E184 /* SceneDelegate.swift in Sources */,
 				3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */,
-				3AB01CEA282E9EAC00EED521 /* TransactionValidation.swift in Sources */,
+				3AB01CEA282E9EAC00EED521 /* InputValidation.swift in Sources */,
 				3A7082EC27FF8C3100990D0E /* LandingViewController.swift in Sources */,
 				3A7082E627FF8B8E00990D0E /* HomeViewController.swift in Sources */,
 			);

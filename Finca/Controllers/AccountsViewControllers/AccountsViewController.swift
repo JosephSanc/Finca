@@ -35,15 +35,46 @@ class AccountsViewController: UIViewController {
     @IBOutlet weak var cryptoTextField: UITextField!
     @IBOutlet weak var fourOneKTextField: UITextField!
     @IBOutlet weak var studentLoansTextField: UITextField!
+    @IBOutlet weak var monthFilterTextField: UITextField!
+    @IBOutlet weak var yearFilterTextField: UITextField!
+    
+    let months = K.months
+    var years = K.years
+    
+    let monthPicker = UIPickerView()
+    let yearPicker = UIPickerView()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        years.insert("Year", at: 0)
+        
         hideKeyboardWhenTappedAround()
+        
+        monthPicker.delegate = self
+        monthPicker.dataSource = self
+        monthFilterTextField.delegate = self
+        monthFilterTextField.text = "Month"
+        monthFilterTextField.inputView = monthPicker
+        monthFilterTextField.textAlignment = .center
+        
+        yearPicker.delegate = self
+        yearPicker.dataSource = self
+        yearFilterTextField.delegate = self
+        yearFilterTextField.text = "Year"
+        yearFilterTextField.inputView = yearPicker
+        yearFilterTextField.textAlignment = .center
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        monthPicker.selectRow(0, inComponent: 0, animated: false)
+        monthFilterTextField.text = months[0]
+        yearPicker.selectRow(0, inComponent: 0, animated: false)
+        yearFilterTextField.text = years[0]
     }
     
     func inputValidation(textInput: UITextField) {
-        let (validation, message): (Bool, String?) = TransactionValidation.validateField(textInput.text!, .amount)
+        let (validation, message): (Bool, String?) = InputValidation.validateField(textInput.text!, .amount)
         
         if !validation {
             let dialogMessage = UIAlertController(title: "Error", message: message!, preferredStyle: .alert)
@@ -135,4 +166,36 @@ extension AccountsViewController: UITextFieldDelegate {
    @objc func dismissKeyboard() {
        view.endEditing(true)
    }
+}
+
+extension AccountsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == monthPicker {
+            return months.count
+        } else {
+            return years.count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == monthPicker {
+            return months[row]
+        } else {
+            return years[row]
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == monthPicker {
+            monthFilterTextField.text = String(months[row])
+            monthFilterTextField.resignFirstResponder()
+        } else {
+            yearFilterTextField.text = String(years[row])
+            yearFilterTextField.resignFirstResponder()
+        }
+    }
 }

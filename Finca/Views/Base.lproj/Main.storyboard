@@ -350,7 +350,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28.300000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="u1n-wY-rIs">
-                                <rect key="frame" x="20" y="121" width="197" height="496.5"/>
+                                <rect key="frame" x="20" y="158" width="197" height="496.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency Fund" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jT8-PS-gMR">
                                         <rect key="frame" x="25.5" y="0.0" width="146.5" height="24"/>
@@ -415,7 +415,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="cSr-oF-469">
-                                <rect key="frame" x="254" y="120" width="140" height="498"/>
+                                <rect key="frame" x="254" y="158" width="140" height="498"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DrJ-jD-HVJ">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
@@ -532,16 +532,40 @@
                                     <constraint firstAttribute="width" constant="140" id="4dN-Lh-ODy"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jDB-5g-r9g">
+                                <rect key="frame" x="99.5" y="96" width="215" height="54"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wii-0x-BDb">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="YeO-Sb-cIA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oqn-MN-GFg">
+                                        <rect key="frame" x="115" y="0.0" width="100" height="34"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Zxg-fL-72r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5oy-1B-255"/>
                         <color key="backgroundColor" name="BrandWhite"/>
                         <constraints>
-                            <constraint firstItem="cSr-oF-469" firstAttribute="top" secondItem="5oy-1B-255" secondAttribute="top" constant="32" id="ApT-yN-VDK"/>
-                            <constraint firstItem="5oy-1B-255" firstAttribute="bottom" secondItem="u1n-wY-rIs" secondAttribute="bottom" constant="244.5" id="EL0-3s-vgd"/>
+                            <constraint firstItem="u1n-wY-rIs" firstAttribute="top" secondItem="jDB-5g-r9g" secondAttribute="bottom" constant="8" id="3KH-pE-ZPm"/>
+                            <constraint firstItem="jDB-5g-r9g" firstAttribute="top" secondItem="5oy-1B-255" secondAttribute="top" constant="8" id="J6f-Vz-F0L"/>
+                            <constraint firstItem="jDB-5g-r9g" firstAttribute="centerX" secondItem="DHv-yE-DbZ" secondAttribute="centerX" id="KZi-Kd-AAP"/>
                             <constraint firstItem="u1n-wY-rIs" firstAttribute="leading" secondItem="5oy-1B-255" secondAttribute="leading" constant="20" id="M9D-vm-QBd"/>
                             <constraint firstItem="5oy-1B-255" firstAttribute="trailing" secondItem="cSr-oF-469" secondAttribute="trailing" constant="20" id="OLe-U5-xZi"/>
-                            <constraint firstItem="5oy-1B-255" firstAttribute="bottom" secondItem="cSr-oF-469" secondAttribute="bottom" constant="244" id="eja-Ay-yoX"/>
-                            <constraint firstItem="u1n-wY-rIs" firstAttribute="top" secondItem="5oy-1B-255" secondAttribute="top" constant="33" id="zsc-pV-KdX"/>
+                            <constraint firstItem="u1n-wY-rIs" firstAttribute="top" secondItem="5oy-1B-255" secondAttribute="top" constant="70" id="Rsh-Yq-BRV"/>
+                            <constraint firstItem="cSr-oF-469" firstAttribute="top" secondItem="5oy-1B-255" secondAttribute="top" constant="70" id="wIf-pH-xwV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Accounts" id="OdW-lB-nK5"/>
@@ -560,12 +584,14 @@
                         <outlet property="individualBrokerageTextField" destination="4uf-4P-5nh" id="jGi-lp-ZZ5"/>
                         <outlet property="macStudioFundLabel" destination="0J3-zh-qpd" id="dtj-sB-6m0"/>
                         <outlet property="macStudioFundTextField" destination="zjK-vy-lkZ" id="nuc-it-1H9"/>
+                        <outlet property="monthFilterTextField" destination="Wii-0x-BDb" id="AU0-z3-n66"/>
                         <outlet property="rothIRALabel" destination="7Q7-BL-oTN" id="M7S-Ap-U1B"/>
                         <outlet property="rothIRATextField" destination="RsU-Gp-O7z" id="k5D-zm-D2X"/>
                         <outlet property="studentLoansLabel" destination="qUy-3v-NMM" id="OnH-iI-FGd"/>
                         <outlet property="studentLoansTextField" destination="b01-86-2vg" id="sv9-DG-TXq"/>
                         <outlet property="wellsFargoCheckingsLabel" destination="2a2-WL-I0H" id="11o-9E-GY8"/>
                         <outlet property="wellsFargoCheckingsTextField" destination="7SW-T3-hh7" id="wfz-DU-SI9"/>
+                        <outlet property="yearFilterTextField" destination="oqn-MN-GFg" id="PNc-2z-tyB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E3e-z9-YUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

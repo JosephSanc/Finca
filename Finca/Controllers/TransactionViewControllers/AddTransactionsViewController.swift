@@ -61,13 +61,13 @@ class AddTransactionViewController: UIViewController {
         
         switch inputEnum {
         case .amount:
-            (validation, message) = TransactionValidation.validateField(textInput.text!, .amount)
+            (validation, message) = InputValidation.validateField(textInput.text!, .amount)
         case .company:
-            (validation, message) = TransactionValidation.validateField(textInput.text!, .company)
+            (validation, message) = InputValidation.validateField(textInput.text!, .company)
         case .category:
-            (validation, message) = TransactionValidation.validateField(textInput.text!, .category)
+            (validation, message) = InputValidation.validateField(textInput.text!, .category)
         case .date:
-            (validation, message) = TransactionValidation.validateField(textInput.text!, .date)
+            (validation, message) = InputValidation.validateField(textInput.text!, .date)
         }
         
         if !validation {
