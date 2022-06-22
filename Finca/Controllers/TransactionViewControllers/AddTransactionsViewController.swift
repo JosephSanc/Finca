@@ -175,11 +175,11 @@ class AddTransactionViewController: UIViewController {
             return
         }
         
-        let dateHelper = DateFormatChanger(dateStr: dateTxtField.text!)
+        let dateFormatChanger = DateFormatChanger(dateStr: dateTxtField.text!)
 
-        let day = dateHelper.getDay()
-        let month = dateHelper.getMonth()
-        let year = dateHelper.getYear()
+        let day = dateFormatChanger.getDay()
+        let month = dateFormatChanger.getMonth()
+        let year = dateFormatChanger.getYear()
 
         guard let amount = Float(amountInput.text!) else { return }
         guard let company = companyInput.text?.lowercased() else { return }

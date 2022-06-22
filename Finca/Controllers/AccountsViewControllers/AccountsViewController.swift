@@ -13,6 +13,9 @@
  */
 import Foundation
 import UIKit
+import Firebase
+import FirebaseStorage
+import SwiftUI
 
 class AccountsViewController: UIViewController {
     @IBOutlet weak var emergencyFundLabel: UILabel!
@@ -38,6 +41,11 @@ class AccountsViewController: UIViewController {
     @IBOutlet weak var monthFilterTextField: UITextField!
     @IBOutlet weak var yearFilterTextField: UITextField!
     
+    var docRef: DocumentReference!
+    
+    private var userId = ""
+    private var accountsId = ""
+    
     let months = K.months
     var years = K.years
     
@@ -46,6 +54,9 @@ class AccountsViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userId = Auth.auth().currentUser!.uid
+        accountsId = UUID().uuidString
         
         years.insert("Year", at: 0)
         
@@ -73,8 +84,8 @@ class AccountsViewController: UIViewController {
         yearFilterTextField.text = years[0]
     }
     
-    func inputValidation(textInput: UITextField) {
-        let (validation, message): (Bool, String?) = InputValidation.validateField(textInput.text!, .amount)
+    func inputValidation(textInput: UITextField, _ inputEnum: textInputs) {
+        let (validation, message): (Bool, String?) = InputValidation.validateField(textInput.text!, inputEnum)
         
         if !validation {
             let dialogMessage = UIAlertController(title: "Error", message: message!, preferredStyle: .alert)
@@ -90,16 +101,18 @@ class AccountsViewController: UIViewController {
     }
     
     func validateAllFieldsFilled() -> Bool {
-        inputValidation(textInput: emergencyFundTextField)
-        inputValidation(textInput: downPaymentTextField)
-        inputValidation(textInput: macStudioFundTextField)
-        inputValidation(textInput: wellsFargoCheckingsTextField)
-        inputValidation(textInput: allyCheckingsTextField)
-        inputValidation(textInput: rothIRATextField)
-        inputValidation(textInput: individualBrokerageTextField)
-        inputValidation(textInput: cryptoTextField)
-        inputValidation(textInput: fourOneKTextField)
-        inputValidation(textInput: studentLoansTextField)
+        inputValidation(textInput: emergencyFundTextField, .amount)
+        inputValidation(textInput: downPaymentTextField, .amount)
+        inputValidation(textInput: macStudioFundTextField, .amount)
+        inputValidation(textInput: wellsFargoCheckingsTextField, .amount)
+        inputValidation(textInput: allyCheckingsTextField, .amount)
+        inputValidation(textInput: rothIRATextField, .amount)
+        inputValidation(textInput: individualBrokerageTextField, .amount)
+        inputValidation(textInput: cryptoTextField, .amount)
+        inputValidation(textInput: fourOneKTextField, .amount)
+        inputValidation(textInput: studentLoansTextField, .amount)
+        inputValidation(textInput: monthFilterTextField, .date)
+        inputValidation(textInput: yearFilterTextField, .date)
         
         if self.presentedViewController as? UIAlertController != nil {
             return false
@@ -109,43 +122,72 @@ class AccountsViewController: UIViewController {
     }
     
     @IBAction func emergencyFundDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: emergencyFundTextField)
+        inputValidation(textInput: emergencyFundTextField, .amount)
     }
     
     @IBAction func downPaymentDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: downPaymentTextField)
+        inputValidation(textInput: downPaymentTextField, .amount)
     }
     
     @IBAction func macStudioFundDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: macStudioFundTextField)
+        inputValidation(textInput: macStudioFundTextField, .amount)
     }
     
     @IBAction func wellsFargoCheckingsDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: wellsFargoCheckingsTextField)
+        inputValidation(textInput: wellsFargoCheckingsTextField, .amount)
     }
     
     @IBAction func allyCheckingsDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: allyCheckingsTextField)
+        inputValidation(textInput: allyCheckingsTextField, .amount)
     }
     
     @IBAction func rothIRADidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: rothIRATextField)
+        inputValidation(textInput: rothIRATextField, .amount)
     }
     
     @IBAction func individualBrokerageDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: individualBrokerageTextField)
+        inputValidation(textInput: individualBrokerageTextField, .amount)
     }
     
     @IBAction func cryptoDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: cryptoTextField)
+        inputValidation(textInput: cryptoTextField, .amount)
     }
     
     @IBAction func fourOneKDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: fourOneKTextField)
+        inputValidation(textInput: fourOneKTextField, .amount)
     }
     
     @IBAction func studentLoansDidEndEditing(_ sender: UITextField){
-        inputValidation(textInput: studentLoansTextField)
+        inputValidation(textInput: studentLoansTextField, .amount)
+    }
+    
+    @IBAction func submitAccounts(_ sender: UIButton) {
+        let monthsFilled = monthFilterTextField.text! != "Month" || yearFilterTextField.text! != "Year"
+        let fieldsFilled = validateAllFieldsFilled()
+        if(!monthsFilled || !fieldsFilled){
+            print("Fields were not filled")
+            return
+        }
+        let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
+        
+        let month = dateFormatChanger.getMonth()
+        let year = dateFormatChanger.getYear()
+        
+        guard let emergencyFund = Float(emergencyFundTextField.text!) else { return }
+        guard let downPaymentFund = Float(downPaymentTextField.text!) else { return }
+        guard let macStudioFund = Float(macStudioFundTextField.text!) else { return }
+        guard let wellsFargoCheckings = Float(wellsFargoCheckingsTextField.text!) else { return }
+        guard let allyCheckings = Float(allyCheckingsTextField.text!) else { return }
+        guard let rothIRA = Float(rothIRATextField.text!) else { return }
+        guard let individualBrokerage = Float(individualBrokerageTextField.text!) else { return }
+        guard let crypto = Float(cryptoTextField.text!) else { return }
+        guard let fourOneK = Float(fourOneKTextField.text!) else { return }
+        guard let studentLoans = Float(studentLoansTextField.text!) else { return }
+        
+        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userId)/\(K.AccountCollection.collectionName)/\(accountsId)")
+        
+        let dataToSave: [String: Any] = ["accountsID": accountsId, "month": month, "year": year, "emergencyFund": emergencyFund, "downPaymentFund": downPaymentFund, "macStudioFund": macStudioFund, "wellsFargoCheckings": wellsFargoCheckings, "allyCheckings": allyCheckings, "rothIRA": rothIRA, "individualBrokerage": individualBrokerage, "crypto": crypto, "fourOneK": fourOneK, "studentLoans": studentLoans]
+        docRef.setData(dataToSave)
     }
 }
 

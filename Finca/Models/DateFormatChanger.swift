@@ -23,7 +23,7 @@ struct DateFormatChanger {
     func getDay() -> Int{
         return Int(splitDate[1])!
     }
-
+    
     func getYear() -> Int{
         return Int(splitDate[2])!
     }

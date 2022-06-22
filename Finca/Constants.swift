@@ -26,4 +26,8 @@ struct K {
     struct TransactionCollection {
         static let collectionName = "transactions"
     }
+    
+    struct AccountCollection{
+        static let collectionName = "accounts"
+    }
 }

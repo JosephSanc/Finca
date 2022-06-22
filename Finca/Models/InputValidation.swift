@@ -24,8 +24,10 @@ struct InputValidation {
             let result = textIsEmpty ? (false, "Please select a catagory") : (true, nil)
             return result
         case .date:
-            let result = textIsEmpty ? (false, "Please select a date") : (true, nil)
-            return result
+            if(textIsEmpty || text == "Month" || text == "Day" || text == "Year"){
+                return (false, "Please select a date")
+            }
+            return (true, nil)
         }
     }
 }
