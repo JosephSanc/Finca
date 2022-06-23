@@ -7,9 +7,8 @@
 
 /**
  TODO:
-    - Make month and year filters to know your budgets in different points of time
-    - Make a submit button that only appears if the user edits one of the account values
-    - When the submit button is pressed, used validateAllFieldsFilled to make sure all fields are filled
+    - Make is so if an accounts document already exists for a selected month and year, pressing "Submit" will update it. Otherwise, it will create a new document for that month and year
+    - Ask the user if they want to update the accounts for the month and year, just in case they don't notice they're about to do that
  */
 import Foundation
 import UIKit
@@ -42,6 +41,7 @@ class AccountsViewController: UIViewController {
     @IBOutlet weak var yearFilterTextField: UITextField!
     
     var docRef: DocumentReference!
+    let db = Firestore.firestore()
     
     private var userId = ""
     private var accountsId = ""
@@ -98,6 +98,29 @@ class AccountsViewController: UIViewController {
 
             self.present(dialogMessage, animated: true, completion: nil)
         }
+    }
+    
+    func accountInfoForDateExists() -> Bool {
+        if monthFilterTextField.text! == "Month" || yearFilterTextField.text! == "Year"{
+            print("")
+        }
+        let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
+        
+        let month = dateFormatChanger.getMonth()
+        let year = dateFormatChanger.getYear()
+        
+        var infoFound = false
+        
+        db.collection(K.UserCollection.collectionName).document(userId).collection(K.AccountCollection.collectionName).whereField("month", isEqualTo: month).whereField("year", isEqualTo: year).getDocuments { querySnapshot, err in
+            if let err = err {
+                print("Error getting document: \(err)")
+                infoFound = false
+            } else {
+                print("Info exists")
+                infoFound = true
+            }
+        }
+        return infoFound
     }
     
     func validateAllFieldsFilled() -> Bool {
@@ -162,32 +185,33 @@ class AccountsViewController: UIViewController {
     }
     
     @IBAction func submitAccounts(_ sender: UIButton) {
-        let monthsFilled = monthFilterTextField.text! != "Month" || yearFilterTextField.text! != "Year"
-        let fieldsFilled = validateAllFieldsFilled()
-        if(!monthsFilled || !fieldsFilled){
-            print("Fields were not filled")
-            return
-        }
-        let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
-        
-        let month = dateFormatChanger.getMonth()
-        let year = dateFormatChanger.getYear()
-        
-        guard let emergencyFund = Float(emergencyFundTextField.text!) else { return }
-        guard let downPaymentFund = Float(downPaymentTextField.text!) else { return }
-        guard let macStudioFund = Float(macStudioFundTextField.text!) else { return }
-        guard let wellsFargoCheckings = Float(wellsFargoCheckingsTextField.text!) else { return }
-        guard let allyCheckings = Float(allyCheckingsTextField.text!) else { return }
-        guard let rothIRA = Float(rothIRATextField.text!) else { return }
-        guard let individualBrokerage = Float(individualBrokerageTextField.text!) else { return }
-        guard let crypto = Float(cryptoTextField.text!) else { return }
-        guard let fourOneK = Float(fourOneKTextField.text!) else { return }
-        guard let studentLoans = Float(studentLoansTextField.text!) else { return }
-        
-        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userId)/\(K.AccountCollection.collectionName)/\(accountsId)")
-        
-        let dataToSave: [String: Any] = ["accountsID": accountsId, "month": month, "year": year, "emergencyFund": emergencyFund, "downPaymentFund": downPaymentFund, "macStudioFund": macStudioFund, "wellsFargoCheckings": wellsFargoCheckings, "allyCheckings": allyCheckings, "rothIRA": rothIRA, "individualBrokerage": individualBrokerage, "crypto": crypto, "fourOneK": fourOneK, "studentLoans": studentLoans]
-        docRef.setData(dataToSave)
+        accountInfoForDateExists()
+//        let monthsFilled = monthFilterTextField.text! != "Month" || yearFilterTextField.text! != "Year"
+//        let fieldsFilled = validateAllFieldsFilled()
+//        if(!monthsFilled || !fieldsFilled){
+//            print("Fields were not filled")
+//            return
+//        }
+//        let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
+//
+//        let month = dateFormatChanger.getMonth()
+//        let year = dateFormatChanger.getYear()
+//
+//        guard let emergencyFund = Float(emergencyFundTextField.text!) else { return }
+//        guard let downPaymentFund = Float(downPaymentTextField.text!) else { return }
+//        guard let macStudioFund = Float(macStudioFundTextField.text!) else { return }
+//        guard let wellsFargoCheckings = Float(wellsFargoCheckingsTextField.text!) else { return }
+//        guard let allyCheckings = Float(allyCheckingsTextField.text!) else { return }
+//        guard let rothIRA = Float(rothIRATextField.text!) else { return }
+//        guard let individualBrokerage = Float(individualBrokerageTextField.text!) else { return }
+//        guard let crypto = Float(cryptoTextField.text!) else { return }
+//        guard let fourOneK = Float(fourOneKTextField.text!) else { return }
+//        guard let studentLoans = Float(studentLoansTextField.text!) else { return }
+
+//        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userId)/\(K.AccountCollection.collectionName)/\(accountsId)")
+//
+//        let dataToSave: [String: Any] = ["accountsID": accountsId, "month": month, "year": year, "emergencyFund": emergencyFund, "downPaymentFund": downPaymentFund, "macStudioFund": macStudioFund, "wellsFargoCheckings": wellsFargoCheckings, "allyCheckings": allyCheckings, "rothIRA": rothIRA, "individualBrokerage": individualBrokerage, "crypto": crypto, "fourOneK": fourOneK, "studentLoans": studentLoans]
+//        docRef.setData(dataToSave)
     }
 }
 
