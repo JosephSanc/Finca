@@ -90,9 +90,7 @@ class AccountsViewController: UIViewController {
         if !validation {
             let dialogMessage = UIAlertController(title: "Error", message: message!, preferredStyle: .alert)
 
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-                print("Ok button tapped")
-            }
+            let ok = UIAlertAction(title: "OK", style: .default)
 
             dialogMessage.addAction(ok)
 
@@ -100,27 +98,46 @@ class AccountsViewController: UIViewController {
         }
     }
     
-    func accountInfoForDateExists() -> Bool {
+    func findInfoForDate(completion: @escaping ((Accounts?) -> ())) {
         if monthFilterTextField.text! == "Month" || yearFilterTextField.text! == "Year"{
-            print("")
+            print("") //TODO: Add a popup message here telling the user to select the date
         }
         let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
-        
+
         let month = dateFormatChanger.getMonth()
         let year = dateFormatChanger.getYear()
-        
-        var infoFound = false
-        
+
         db.collection(K.UserCollection.collectionName).document(userId).collection(K.AccountCollection.collectionName).whereField("month", isEqualTo: month).whereField("year", isEqualTo: year).getDocuments { querySnapshot, err in
             if let err = err {
-                print("Error getting document: \(err)")
-                infoFound = false
+                print("THIS DOCUMENT DOES NOT EXIST: ")
+                completion(nil)
             } else {
-                print("Info exists")
-                infoFound = true
+                var count = 0
+                for _ in querySnapshot!.documents {
+                    count += 1
+                }
+                if count == 0 {
+                    completion(nil)
+                } else {
+                    let data = querySnapshot!.documents[0].data()
+                    let month = data["month"] as! Int
+                    let year = data["year"] as! Int
+                    let accountsID = data["accountsID"] as! String
+                    let emergencyFund = data["emergencyFund"] as! Float
+                    let downPaymentFund = data["downPaymentFund"] as! Float
+                    let macStudioFund = data["macStudioFund"] as! Float
+                    let wellsFargoCheckings = data["wellsFargoCheckings"] as! Float
+                    let allyCheckings = data["allyCheckings"] as! Float
+                    let rothIRA = data["rothIRA"] as! Float
+                    let individualBrokerage = data["individualBrokerage"] as! Float
+                    let crypto = data["crypto"] as! Float
+                    let fourOneK = data["fourOneK"] as! Float
+                    let studentLoans = data["studentLoans"] as! Float
+                    let accounts = Accounts(accountsID, month, year, emergencyFund, downPaymentFund, macStudioFund, wellsFargoCheckings, allyCheckings, rothIRA, individualBrokerage, crypto, fourOneK, studentLoans)
+                    completion(accounts)
+                }
             }
         }
-        return infoFound
     }
     
     func validateAllFieldsFilled() -> Bool {
@@ -185,7 +202,41 @@ class AccountsViewController: UIViewController {
     }
     
     @IBAction func submitAccounts(_ sender: UIButton) {
-        accountInfoForDateExists()
+        findInfoForDate { accountsInfo in
+            if let accounts = accountsInfo {
+                self.emergencyFundTextField.text = String(accounts.emergencyFund ?? 0.0)
+                self.downPaymentTextField.text = String(accounts.downPaymentFund ?? 0.0)
+                self.macStudioFundTextField.text = String(accounts.macStudioFund ?? 0.0)
+                self.wellsFargoCheckingsTextField.text = String(accounts.wellsFargoCheckings ?? 0.0)
+                self.allyCheckingsTextField.text = String(accounts.allyCheckings ?? 0.0)
+                self.rothIRATextField.text = String(accounts.rothIRA ?? 0.0)
+                self.individualBrokerageTextField.text = String(accounts.individualBrokerage ?? 0.0)
+                self.cryptoTextField.text = String(accounts.crypto ?? 0.0)
+                self.fourOneKTextField.text = String(accounts.fourOneK ?? 0.0)
+                self.studentLoansTextField.text = String(accounts.studentLoans ?? 0.0)
+            } else {
+                self.emergencyFundTextField.text = ""
+                self.downPaymentTextField.text = ""
+                self.macStudioFundTextField.text = ""
+                self.wellsFargoCheckingsTextField.text = ""
+                self.allyCheckingsTextField.text = ""
+                self.rothIRATextField.text = ""
+                self.individualBrokerageTextField.text = ""
+                self.cryptoTextField.text = ""
+                self.fourOneKTextField.text = ""
+                self.studentLoansTextField.text = ""
+                
+                let message = "Accounts info does not exist for that date, please try another date or submit account info for that date"
+                let dialogMessage = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+
+                let ok = UIAlertAction(title: "OK", style: .default)
+
+                dialogMessage.addAction(ok)
+
+                self.present(dialogMessage, animated: true, completion: nil)
+            }
+        }
+        
 //        let monthsFilled = monthFilterTextField.text! != "Month" || yearFilterTextField.text! != "Year"
 //        let fieldsFilled = validateAllFieldsFilled()
 //        if(!monthsFilled || !fieldsFilled){
