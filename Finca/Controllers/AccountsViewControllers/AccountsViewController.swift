@@ -109,14 +109,10 @@ class AccountsViewController: UIViewController {
 
         db.collection(K.UserCollection.collectionName).document(userId).collection(K.AccountCollection.collectionName).whereField("month", isEqualTo: month).whereField("year", isEqualTo: year).getDocuments { querySnapshot, err in
             if let err = err {
-                print("THIS DOCUMENT DOES NOT EXIST: ")
+                print("Error getting document: \(err)")
                 completion(nil)
             } else {
-                var count = 0
-                for _ in querySnapshot!.documents {
-                    count += 1
-                }
-                if count == 0 {
+                if querySnapshot!.documents.isEmpty {
                     completion(nil)
                 } else {
                     let data = querySnapshot!.documents[0].data()
