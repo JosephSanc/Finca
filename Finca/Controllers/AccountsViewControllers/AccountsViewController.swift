@@ -44,7 +44,6 @@ class AccountsViewController: UIViewController {
     let db = Firestore.firestore()
     
     private var userId = ""
-    private var accountsId = ""
     
     let months = K.months
     var years = K.years
@@ -56,7 +55,6 @@ class AccountsViewController: UIViewController {
         super.viewDidLoad()
         
         userId = Auth.auth().currentUser!.uid
-        accountsId = UUID().uuidString
         
         years.insert("Year", at: 0)
         
@@ -100,37 +98,38 @@ class AccountsViewController: UIViewController {
     
     func findInfoForDate(completion: @escaping ((Accounts?) -> ())) {
         if monthFilterTextField.text! == "Month" || yearFilterTextField.text! == "Year"{
-            print("") //TODO: Add a popup message here telling the user to select the date
-        }
-        let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
+            MessagePopupHelper.showMessagePopupOk(self, "Error", "Please select a month and year")
+        } else {
+            let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
 
-        let month = dateFormatChanger.getMonth()
-        let year = dateFormatChanger.getYear()
+            let month = dateFormatChanger.getMonth()
+            let year = dateFormatChanger.getYear()
 
-        db.collection(K.UserCollection.collectionName).document(userId).collection(K.AccountCollection.collectionName).whereField("month", isEqualTo: month).whereField("year", isEqualTo: year).getDocuments { querySnapshot, err in
-            if let err = err {
-                print("Error getting document: \(err)")
-                completion(nil)
-            } else {
-                if querySnapshot!.documents.isEmpty {
+            db.collection(K.UserCollection.collectionName).document(userId).collection(K.AccountCollection.collectionName).whereField("month", isEqualTo: month).whereField("year", isEqualTo: year).getDocuments { querySnapshot, err in
+                if let err = err {
+                    print("Error getting document: \(err)")
                     completion(nil)
                 } else {
-                    let data = querySnapshot!.documents[0].data()
-                    let month = data["month"] as! Int
-                    let year = data["year"] as! Int
-                    let accountsID = data["accountsID"] as! String
-                    let emergencyFund = data["emergencyFund"] as! Float
-                    let downPaymentFund = data["downPaymentFund"] as! Float
-                    let macStudioFund = data["macStudioFund"] as! Float
-                    let wellsFargoCheckings = data["wellsFargoCheckings"] as! Float
-                    let allyCheckings = data["allyCheckings"] as! Float
-                    let rothIRA = data["rothIRA"] as! Float
-                    let individualBrokerage = data["individualBrokerage"] as! Float
-                    let crypto = data["crypto"] as! Float
-                    let fourOneK = data["fourOneK"] as! Float
-                    let studentLoans = data["studentLoans"] as! Float
-                    let accounts = Accounts(accountsID, month, year, emergencyFund, downPaymentFund, macStudioFund, wellsFargoCheckings, allyCheckings, rothIRA, individualBrokerage, crypto, fourOneK, studentLoans)
-                    completion(accounts)
+                    if querySnapshot!.documents.isEmpty {
+                        completion(nil)
+                    } else {
+                        let data = querySnapshot!.documents[0].data()
+                        let month = data["month"] as! Int
+                        let year = data["year"] as! Int
+                        let accountsID = data["accountsID"] as! String
+                        let emergencyFund = data["emergencyFund"] as! Float
+                        let downPaymentFund = data["downPaymentFund"] as! Float
+                        let macStudioFund = data["macStudioFund"] as! Float
+                        let wellsFargoCheckings = data["wellsFargoCheckings"] as! Float
+                        let allyCheckings = data["allyCheckings"] as! Float
+                        let rothIRA = data["rothIRA"] as! Float
+                        let individualBrokerage = data["individualBrokerage"] as! Float
+                        let crypto = data["crypto"] as! Float
+                        let fourOneK = data["fourOneK"] as! Float
+                        let studentLoans = data["studentLoans"] as! Float
+                        let accounts = Accounts(accountsID, month, year, emergencyFund, downPaymentFund, macStudioFund, wellsFargoCheckings, allyCheckings, rothIRA, individualBrokerage, crypto, fourOneK, studentLoans)
+                        completion(accounts)
+                    }
                 }
             }
         }
@@ -155,6 +154,70 @@ class AccountsViewController: UIViewController {
         } else {
             return true
         }
+    }
+    
+    func fillAccountsFields(accounts: Accounts){
+        emergencyFundTextField.text = String(accounts.emergencyFund ?? 0.0)
+        downPaymentTextField.text = String(accounts.downPaymentFund ?? 0.0)
+        macStudioFundTextField.text = String(accounts.macStudioFund ?? 0.0)
+        wellsFargoCheckingsTextField.text = String(accounts.wellsFargoCheckings ?? 0.0)
+        allyCheckingsTextField.text = String(accounts.allyCheckings ?? 0.0)
+        rothIRATextField.text = String(accounts.rothIRA ?? 0.0)
+        individualBrokerageTextField.text = String(accounts.individualBrokerage ?? 0.0)
+        cryptoTextField.text = String(accounts.crypto ?? 0.0)
+        fourOneKTextField.text = String(accounts.fourOneK ?? 0.0)
+        studentLoansTextField.text = String(accounts.studentLoans ?? 0.0)
+    }
+    
+    func emptyAccountsFields(){
+        emergencyFundTextField.text = ""
+        downPaymentTextField.text = ""
+        macStudioFundTextField.text = ""
+        wellsFargoCheckingsTextField.text = ""
+        allyCheckingsTextField.text = ""
+        rothIRATextField.text = ""
+        individualBrokerageTextField.text = ""
+        cryptoTextField.text = ""
+        fourOneKTextField.text = ""
+        studentLoansTextField.text = ""
+    }
+    
+    func submitAccountsInfo(_ accountsInfo: Accounts?){
+        var accountsId = ""
+        let monthsFilled = monthFilterTextField.text! != "Month" || yearFilterTextField.text! != "Year"
+        let fieldsFilled = validateAllFieldsFilled()
+        if(!monthsFilled || !fieldsFilled){
+            print("Fields were not filled")
+            return
+        }
+        let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
+
+        let month = dateFormatChanger.getMonth()
+        let year = dateFormatChanger.getYear()
+        
+        if let accountsInfo = accountsInfo {
+            accountsId = accountsInfo.accountsID!
+        } else {
+            accountsId = UUID().uuidString
+        }
+        guard let emergencyFund = Float(emergencyFundTextField.text!) else { return }
+        guard let downPaymentFund = Float(downPaymentTextField.text!) else { return }
+        guard let macStudioFund = Float(macStudioFundTextField.text!) else { return }
+        guard let wellsFargoCheckings = Float(wellsFargoCheckingsTextField.text!) else { return }
+        guard let allyCheckings = Float(allyCheckingsTextField.text!) else { return }
+        guard let rothIRA = Float(rothIRATextField.text!) else { return }
+        guard let individualBrokerage = Float(individualBrokerageTextField.text!) else { return }
+        guard let crypto = Float(cryptoTextField.text!) else { return }
+        guard let fourOneK = Float(fourOneKTextField.text!) else { return }
+        guard let studentLoans = Float(studentLoansTextField.text!) else { return }
+
+        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userId)/\(K.AccountCollection.collectionName)/\(accountsId)")
+
+        let dataToSave: [String: Any] = ["accountsID": accountsId, "month": month, "year": year, "emergencyFund": emergencyFund, "downPaymentFund": downPaymentFund, "macStudioFund": macStudioFund, "wellsFargoCheckings": wellsFargoCheckings, "allyCheckings": allyCheckings, "rothIRA": rothIRA, "individualBrokerage": individualBrokerage, "crypto": crypto, "fourOneK": fourOneK, "studentLoans": studentLoans]
+        docRef.setData(dataToSave)
+        
+        MessagePopupHelper.showMessagePopupOk(self, "Success!", "Data was successfully saved!")
+        emptyAccountsFields()
     }
     
     @IBAction func emergencyFundDidEndEditing(_ sender: UITextField){
@@ -197,68 +260,28 @@ class AccountsViewController: UIViewController {
         inputValidation(textInput: studentLoansTextField, .amount)
     }
     
+    
+    @IBAction func findAccounts(_ sender: UIButton) {
+        findInfoForDate { accountsInfo in
+            if let accounts = accountsInfo {
+                self.fillAccountsFields(accounts: accounts)
+            } else {
+                self.emptyAccountsFields()
+                MessagePopupHelper.showMessagePopupOk(self, "Error", "Accounts info does not exist for that date, please try another date or submit account info for this date")
+            }
+        }
+    }
+    
     @IBAction func submitAccounts(_ sender: UIButton) {
         findInfoForDate { accountsInfo in
             if let accounts = accountsInfo {
-                self.emergencyFundTextField.text = String(accounts.emergencyFund ?? 0.0)
-                self.downPaymentTextField.text = String(accounts.downPaymentFund ?? 0.0)
-                self.macStudioFundTextField.text = String(accounts.macStudioFund ?? 0.0)
-                self.wellsFargoCheckingsTextField.text = String(accounts.wellsFargoCheckings ?? 0.0)
-                self.allyCheckingsTextField.text = String(accounts.allyCheckings ?? 0.0)
-                self.rothIRATextField.text = String(accounts.rothIRA ?? 0.0)
-                self.individualBrokerageTextField.text = String(accounts.individualBrokerage ?? 0.0)
-                self.cryptoTextField.text = String(accounts.crypto ?? 0.0)
-                self.fourOneKTextField.text = String(accounts.fourOneK ?? 0.0)
-                self.studentLoansTextField.text = String(accounts.studentLoans ?? 0.0)
+                MessagePopupHelper.showMessagePopupEditCancel(self, "Warning", "Accounts info already exists, would you like to submit the new data") {
+                    self.submitAccountsInfo(accounts)
+                }
             } else {
-                self.emergencyFundTextField.text = ""
-                self.downPaymentTextField.text = ""
-                self.macStudioFundTextField.text = ""
-                self.wellsFargoCheckingsTextField.text = ""
-                self.allyCheckingsTextField.text = ""
-                self.rothIRATextField.text = ""
-                self.individualBrokerageTextField.text = ""
-                self.cryptoTextField.text = ""
-                self.fourOneKTextField.text = ""
-                self.studentLoansTextField.text = ""
-                
-                let message = "Accounts info does not exist for that date, please try another date or submit account info for that date"
-                let dialogMessage = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-
-                let ok = UIAlertAction(title: "OK", style: .default)
-
-                dialogMessage.addAction(ok)
-
-                self.present(dialogMessage, animated: true, completion: nil)
+                self.submitAccountsInfo(nil)
             }
         }
-        
-//        let monthsFilled = monthFilterTextField.text! != "Month" || yearFilterTextField.text! != "Year"
-//        let fieldsFilled = validateAllFieldsFilled()
-//        if(!monthsFilled || !fieldsFilled){
-//            print("Fields were not filled")
-//            return
-//        }
-//        let dateFormatChanger = DateFormatChanger(dateStr: "\(monthFilterTextField.text!.prefix(3)), 0 \(yearFilterTextField.text!)")
-//
-//        let month = dateFormatChanger.getMonth()
-//        let year = dateFormatChanger.getYear()
-//
-//        guard let emergencyFund = Float(emergencyFundTextField.text!) else { return }
-//        guard let downPaymentFund = Float(downPaymentTextField.text!) else { return }
-//        guard let macStudioFund = Float(macStudioFundTextField.text!) else { return }
-//        guard let wellsFargoCheckings = Float(wellsFargoCheckingsTextField.text!) else { return }
-//        guard let allyCheckings = Float(allyCheckingsTextField.text!) else { return }
-//        guard let rothIRA = Float(rothIRATextField.text!) else { return }
-//        guard let individualBrokerage = Float(individualBrokerageTextField.text!) else { return }
-//        guard let crypto = Float(cryptoTextField.text!) else { return }
-//        guard let fourOneK = Float(fourOneKTextField.text!) else { return }
-//        guard let studentLoans = Float(studentLoansTextField.text!) else { return }
-
-//        docRef = Firestore.firestore().document("\(K.UserCollection.collectionName)/\(userId)/\(K.AccountCollection.collectionName)/\(accountsId)")
-//
-//        let dataToSave: [String: Any] = ["accountsID": accountsId, "month": month, "year": year, "emergencyFund": emergencyFund, "downPaymentFund": downPaymentFund, "macStudioFund": macStudioFund, "wellsFargoCheckings": wellsFargoCheckings, "allyCheckings": allyCheckings, "rothIRA": rothIRA, "individualBrokerage": individualBrokerage, "crypto": crypto, "fourOneK": fourOneK, "studentLoans": studentLoans]
-//        docRef.setData(dataToSave)
     }
 }
 

@@ -12,6 +12,7 @@
 		3A3D73E6280981180018E453 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3D73E5280981180018E453 /* UserHelper.swift */; };
 		3A4A789A280E11E400E2037D /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4A7898280E11E400E2037D /* TransactionCell.swift */; };
 		3A4A789B280E11E400E2037D /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4A7899280E11E400E2037D /* TransactionCell.xib */; };
+		3A56DE2F28746019001D2E3D /* MessagePopupHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56DE2E28746019001D2E3D /* MessagePopupHelper.swift */; };
 		3A5D0351285A760300B1B9DB /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D0350285A760300B1B9DB /* AccountsViewController.swift */; };
 		3A63B15F27FBA4D300A73B60 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */; };
 		3A7082E627FF8B8E00990D0E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7082E527FF8B8E00990D0E /* HomeViewController.swift */; };
@@ -44,6 +45,7 @@
 		3A3D73E5280981180018E453 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		3A4A7898280E11E400E2037D /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		3A4A7899280E11E400E2037D /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TransactionCell.xib; path = ../TransactionCell.xib; sourceTree = "<group>"; };
+		3A56DE2E28746019001D2E3D /* MessagePopupHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePopupHelper.swift; sourceTree = "<group>"; };
 		3A5D0350285A760300B1B9DB /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		3A63B15D27FBA4D300A73B60 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		3A7082E527FF8B8E00990D0E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				3A876C7A2812D10400215965 /* DateHelper.swift */,
 				3AB01CE9282E9EAC00EED521 /* InputValidation.swift */,
 				3AAAA049286E67E000795754 /* Accounts.swift */,
+				3A56DE2E28746019001D2E3D /* MessagePopupHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				3A88871327F1D7E000D7E184 /* SceneDelegate.swift in Sources */,
 				3A88874C27F8D04500D7E184 /* Transaction.swift in Sources */,
 				3AB01CEA282E9EAC00EED521 /* InputValidation.swift in Sources */,
+				3A56DE2F28746019001D2E3D /* MessagePopupHelper.swift in Sources */,
 				3AAAA04A286E67E000795754 /* Accounts.swift in Sources */,
 				3A7082EC27FF8C3100990D0E /* LandingViewController.swift in Sources */,
 				3A7082E627FF8B8E00990D0E /* HomeViewController.swift in Sources */,
